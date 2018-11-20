@@ -1,6 +1,20 @@
 <agm-map id="map" [latitude]="latitude" [longitude]="longitude" [mapTypeControl]="true">
 
   <!-- Marker in center (testing purposes) -->
-  <agm-marker *ngFor="let riglocation of rigLocations" [latitude]="latitude" [longitude]="longitude" (mouseOver)="hoverOn(riglocation)" (mouseOut)="hoverOff(riglocation)"></agm-marker>
+  <agm-marker *ngFor="let rig of rigs" [latitude]="rig.lat" [longitude]="rig.lng" [label]="rig.label" [title]="rig.id + ' | ' + rig.name"
+              (markerClick)="clickedMarker(m.label, i)" (mouseOver)="hoverOn($event)" (mouseOut)="hoverOff($event)">
+
+    <agm-info-window>
+      <p>
+        <strong>Id</strong>: {{rig.id}}<br>
+        <strong>Name</strong>: {{rig.name}}<br>
+        <strong>Lat</strong>: {{rig.lat}}<br>
+        <strong>Lng</strong>: {{rig.lng}}<br>
+        <strong>Time:</strong>: {{rig.timeStamp}}
+      </p>
+    </agm-info-window>
+  </agm-marker>
+
+
 
 </agm-map>

@@ -5,6 +5,7 @@ export class Rig {
   name: string;
   lat: number;
   lng: number;
-  timeStamp: Date;
+  label: string;
+  timeStamp?: Date;
   color?: string;
 }
