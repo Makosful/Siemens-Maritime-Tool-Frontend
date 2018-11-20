@@ -1,0 +1,6 @@
+<agm-map id="map" [latitude]="latitude" [longitude]="longitude" [mapTypeControl]="true">
+
+  <!-- Marker in center (testing purposes) -->
+  <agm-marker *ngFor="let riglocation of rigLocations" [latitude]="latitude" [longitude]="longitude" (mouseOver)="hoverOn(riglocation)" (mouseOut)="hoverOff(riglocation)"></agm-marker>
+
+</agm-map>
