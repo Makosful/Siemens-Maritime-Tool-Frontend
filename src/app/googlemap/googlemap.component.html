@@ -1,4 +1,5 @@
 <agm-map id="map" [latitude]="latitude" [longitude]="longitude" [mapTypeControl]="true" [mapTypeId]="'hybrid'">
+  <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
   <agm-marker
     *ngFor="let rig of rigs"
     (markerClick)="clickedMarker(infowindow)" (mouseOver)="hoverOn(infowindow)" (mouseOut)="hoverOff(infowindow)"
@@ -25,4 +26,5 @@
     </agm-info-window>
 
   </agm-marker>
+  </agm-marker-cluster>
 </agm-map>

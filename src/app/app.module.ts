@@ -6,6 +6,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { GooglemapComponent } from './googlemap/googlemap.component';
 import {AgmCoreModule} from '@agm/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AgmJsMarkerClustererModule} from '@agm/js-marker-clusterer';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     NgbModule,
     AgmCoreModule.forRoot({apiKey: 'AIzaSyDT0gn3ZgNZG_WfgXSgANlmK-5Zkhhxm6s'}),
-    NgbModule
+    NgbModule,
+    AgmJsMarkerClustererModule
   ],
   providers: [],
   bootstrap: [AppComponent]
