@@ -2,9 +2,9 @@
 
   <!-- Marker in center (testing purposes) -->
   <agm-marker *ngFor="let rig of rigs" [latitude]="rig.lat" [longitude]="rig.lng" [label]="rig.label" [title]="rig.id + ' | ' + rig.name"
-              (markerClick)="clickedMarker(m.label, i)" (mouseOver)="hoverOn($event)" (mouseOut)="hoverOff($event)">
+              (markerClick)="clickedMarker(infoWindow)" (mouseOver)="hoverOn()" (mouseOut)="hoverOff($event)">
 
-    <agm-info-window>
+    <agm-info-window #infoWindw>
       <p>
         <strong>Id</strong>: {{rig.id}}<br>
         <strong>Name</strong>: {{rig.name}}<br>

@@ -63,8 +63,11 @@ export class GooglemapComponent implements OnInit {
     this.hovering = false;
   }
 
-  clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`);
+  clickedMarker(infowindow) {
+    if (this.previous) {
+      this.previous.close();
+    }
+    this.previous = infowindow;
   }
 
   ngOnInit() {
