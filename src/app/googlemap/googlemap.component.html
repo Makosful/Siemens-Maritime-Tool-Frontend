@@ -1,4 +1,4 @@
-<agm-map id="map" [latitude]="latitude" [longitude]="longitude" [mapTypeControl]="true">
+<agm-map id="map" [latitude]="latitude" [longitude]="longitude" [mapTypeControl]="true" [mapTypeId]="'hybrid'">
   <agm-marker
     *ngFor="let rig of rigs"
     (markerClick)="clickedMarker(infowindow)" (mouseOver)="hoverOn(infowindow)" (mouseOut)="hoverOff(infowindow)"
