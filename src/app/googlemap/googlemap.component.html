@@ -1,18 +1,40 @@
 <agm-map id="map" [latitude]="latitude" [longitude]="longitude" [mapTypeControl]="true">
 
   <!-- Marker in center (testing purposes) -->
+<!--
   <agm-marker *ngFor="let rig of rigs" [latitude]="rig.lat" [longitude]="rig.lng" [label]="rig.label" [title]="rig.id + ' | ' + rig.name"
-              (markerClick)="clickedMarker(infoWindow)" (mouseOver)="hoverOn()" (mouseOut)="hoverOff($event)">
+              (markerClick)="clickedMarker(infoWindow)" (mouseOver)="hoverOn($event)" (mouseOut)="hoverOff($event)">
 
     <agm-info-window #infoWindw>
-      <p>
         <strong>Id</strong>: {{rig.id}}<br>
         <strong>Name</strong>: {{rig.name}}<br>
         <strong>Lat</strong>: {{rig.lat}}<br>
         <strong>Lng</strong>: {{rig.lng}}<br>
         <strong>Time:</strong>: {{rig.timeStamp}}
-      </p>
     </agm-info-window>
+  </agm-marker>
+-->
+  <agm-marker
+    *ngFor="let rig of rigs"
+    (markerClick)="clickedMarker(infowindow)" (mouseOver)="hoverOn(infowindow)" (mouseOut)="hoverOff(infowindow)"
+    [title]="'id:' + rig.id + ' ' + ' ' + rig.name"
+    [latitude]="rig.lat"
+    [longitude]="rig.lng"
+    [label]="{
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: '18px',
+    text: rig.label
+}">
+
+    <agm-info-window #infowindow>
+      <strong>Id</strong>: {{rig.id}}<br>
+      <strong>Name</strong>: {{rig.name}}<br>
+      <strong>Lat</strong>: {{rig.lat}}<br>
+      <strong>Lng</strong>: {{rig.lng}}<br>
+      <strong>Time</strong>: {{rig.timeStamp}}
+    </agm-info-window>
+
   </agm-marker>
 
 
