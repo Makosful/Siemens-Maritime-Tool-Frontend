@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {LandingComponent} from './landing/landing.component';
-import {GooglemapComponent} from './googlemap/googlemap.component';
+import {GoggleMapComponent} from './googlemap/goggle-map.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent },
-  {path: 'map', component: GooglemapComponent },
+  {path: 'map', component: GoggleMapComponent },
   // TODO rig list {path: '/rigs', component:  },
   // TODO rig id {path: '/rigs/:id', component:  },
-  // TODO rig update {path: '/update-rig/:id', component:  },
+  // TODO rig edit {path: '/edit-rig/:id', component:  },
   // TODO rig add {path: '/add-rig', component:  },
 ]
 
