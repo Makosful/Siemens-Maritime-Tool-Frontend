@@ -1,3 +1,6 @@
-<p>
-  rig-list works!
-</p>
+<ul>
+  <li *ngFor="let rig of rigs">
+    <a routerLink="/rigs/{{rig.id}}">{{rig.id}} | {{rig.name}}</a>
+  </li>
+</ul>
+<button (click)="addRig()">Add a rig</button>

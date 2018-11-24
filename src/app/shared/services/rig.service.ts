@@ -98,11 +98,11 @@ export class RigService {
     return this.rigs;
   }
 
-  getRigById() {
-    // TODO
+  getRigById(id: number) {
+    return this.rigs.find(rig => rig.id === id);
   }
 
   addRig(rig: Rig) {
-    // TODO
+    this.rigs.push(rig);
   }
 }

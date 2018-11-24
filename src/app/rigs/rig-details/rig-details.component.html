@@ -1,0 +1,8 @@
+<h2>Rig details</h2>
+<div *ngIf="rig">
+<h3>id: {{rig.id}} | name: {{rig.name}}</h3>
+<h4>label: {{rig.label}} | coordinates: {{rig.lat}}, {{rig.lng}} | color: {{rig.color}}</h4>
+</div>
+<div *ngIf="!rig">
+  Error: No rig was found with the given id.
+</div>
