@@ -1,6 +1,25 @@
 <ul>
   <li *ngFor="let rig of rigs">
-    <a routerLink="/rigs/{{rig.id}}">{{rig.id}} | {{rig.name}}</a>
+    <a routerLink="/rigs/{{rig.id}}" class="mr-1 mt-1">{{rig.id}} | {{rig.name}}</a>
+    <button class="mr-1 mt-1 btn btn-info" routerLink="/edit-rig/{{rig.id}}">Edit</button>
+    <button class="mr-1 mt-1 btn btn-danger" (click)="open(modal, rig)">Delete</button>
   </li>
 </ul>
-<button (click)="addRig()">Add a rig</button>
+<button routerLink="/add-rig">Add a rig</button>
+
+<ng-template #modal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Delete Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you wish to delete this rig?</p>
+    <span class="text-danger">This operation can not be undone.</span>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-info" (click)="modal.close()">No</button>
+    <button type="button" class="btn btn-outline-danger" (click)="deleteRig(rigID); modal.close()">Yes</button>
+  </div>
+</ng-template>

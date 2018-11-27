@@ -1,0 +1,20 @@
+<form [formGroup]="rigForm" (ngSubmit)="checkRig()">
+
+  <label>
+    Id:
+    <input type="text" formControlName="id">
+  </label>
+
+  <label>
+    Label:
+    <input type="text" formControlName="label">
+  </label>
+
+  <label>
+    Color:
+    <input type="text" formControlName="color">
+  </label>
+
+  <button type="submit">Add rig</button>
+
+</form>

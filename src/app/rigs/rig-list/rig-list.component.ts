@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {RigService} from '../../shared/services/rig.service';
-import {Rig} from '../../shared/models/rig';
+import {RigService} from '../services/rig.service';
+import {Rig} from '../models/rig';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-rig-list',
@@ -8,23 +9,22 @@ import {Rig} from '../../shared/models/rig';
   styleUrls: ['./rig-list.component.css']
 })
 export class RigListComponent implements OnInit {
-
   rigs: Rig[];
-
-  constructor(private rigService: RigService) { }
+  rigID: number;
+  constructor(private rigService: RigService, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.rigs = this.rigService.getRigs();
   }
 
-  addRig() {
-    this.rigService.addRig({
-      id: 69420,
-      label: 'BI',
-      name: 'Blaze it',
-      lat: 55.32629578,
-      lng: 8.65639392,
-      color: '#00FF7F'
-  });
+  deleteRig(id: number) {
+    this.rigService.deleteRig(id);
+    this.rigs = this.rigService.getRigs();
   }
+
+  open(content, rig: Rig) {
+    this.rigID = rig.id;
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  }
+
 }

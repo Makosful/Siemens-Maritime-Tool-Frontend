@@ -5,14 +5,16 @@ import {LandingComponent} from './landing/landing.component';
 import {GoggleMapComponent} from './map/goggle-map.component';
 import {RigListComponent} from './rigs/rig-list/rig-list.component';
 import {RigDetailsComponent} from './rigs/rig-details/rig-details.component';
+import {RigAddComponent} from './rigs/rig-add/rig-add.component';
+import {RigEditComponent} from './rigs/rig-edit/rig-edit.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent },
   {path: 'map', component: GoggleMapComponent },
   {path: 'rigs', component: RigListComponent },
   {path: 'rigs/:id', component:  RigDetailsComponent },
-  // TODO rig edit {path: 'edit-rig/:id', component:  },
-  // TODO rig add {path: 'add-rig', component:  },
+  {path: 'edit-rig/:id', component: RigEditComponent },
+  {path: 'add-rig', component: RigAddComponent},
 ]
 
 @NgModule({
