@@ -1,12 +1,16 @@
-<ul>
-  <li *ngFor="let rig of rigs">
-    <a routerLink="/rigs/{{rig.id}}" class="mr-1 mt-1">{{rig.id}} | {{rig.name}}</a>
-    <button class="mr-1 mt-1 btn btn-info" routerLink="/edit-rig/{{rig.id}}">Edit</button>
-    <button class="mr-1 mt-1 btn btn-danger" (click)="open(modal, rig)">Delete</button>
-  </li>
-</ul>
-<button routerLink="/add-rig">Add a rig</button>
+<div class="container-fluid" *ngIf="rigs">
+  <ul>
+    <li *ngFor="let rig of rigs">
+      <a routerLink="/rigs/{{rig.id}}" class="mr-1 mt-1">{{rig.id}} | {{rig.name}}</a>
+      <button class="mr-1 mt-1 btn btn-info" routerLink="/edit-rig/{{rig.id}}">Edit</button>
+      <button class="mr-1 mt-1 btn btn-danger" (click)="open(modal, rig)">Delete</button>
+    </li>
+  </ul>
+  <button routerLink="/add-rig">Add a rig</button>
+</div>
+<div class="container-fluid" *ngIf="!rigs">
 
+</div>
 <ng-template #modal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Delete Confirmation</h4>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {RigService} from '../services/rig.service';
+import {RigService} from '../../shared/services/rig.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 import { GoggleMapComponent } from './map/goggle-map.component';
 import {AgmCoreModule} from '@agm/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -14,6 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RigAddComponent } from './rigs/rig-add/rig-add.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { RigEditComponent } from './rigs/rig-edit/rig-edit.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { RigEditComponent } from './rigs/rig-edit/rig-edit.component';
     NgbModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({apiKey: 'AIzaSyDT0gn3ZgNZG_WfgXSgANlmK-5Zkhhxm6s'}),
-    NgbModule,
+    HttpClientModule,
     AgmJsMarkerClustererModule,
     AppRoutingModule
   ],

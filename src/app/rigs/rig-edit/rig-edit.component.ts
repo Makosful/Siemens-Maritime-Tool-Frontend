@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {RigService} from '../services/rig.service';
+import {RigService} from '../../shared/services/rig.service';
 import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({

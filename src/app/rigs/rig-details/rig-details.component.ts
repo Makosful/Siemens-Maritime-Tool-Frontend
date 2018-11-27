@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {RigService} from '../services/rig.service';
-import {Rig} from '../models/rig';
+import {RigService} from '../../shared/services/rig.service';
+import {Rig} from '../../shared/models/rig';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({

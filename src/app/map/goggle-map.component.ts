@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {RigService} from '../rigs/services/rig.service';
-import {MapService} from './services/map.service';
-import {Rig} from '../rigs/models/rig';
+import {RigService} from '../shared/services/rig.service';
+import {MapService} from '../shared/services/map.service';
+import {Rig} from '../shared/models/rig';
 
 @Component({
   selector: 'app-googlemap',

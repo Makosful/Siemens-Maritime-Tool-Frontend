@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Rig} from '../models/rig';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ export class RigService {
 
   rigs: Rig[];
   id = 1;
-  constructor() {
+  constructor(private httpclient: HttpClient) {
     this.rigs = [
       {
         id: this.id++,
@@ -94,8 +96,9 @@ export class RigService {
     ];
   }
 
-  getRigs(): Rig[] {
-    return this.rigs;
+  getRigs(): Observable<Rig[]> {
+    // return this.rigs;
+    return this.httpclient.get<Rig[]>(this.apiUrl);
   }
 
   getRigById(id: number) {
