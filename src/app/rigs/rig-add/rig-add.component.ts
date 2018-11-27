@@ -26,7 +26,8 @@ export class RigAddComponent implements OnInit {
 
   checkRig() {
     const rig = this.rigForm.value;
-    this.rigService.addRig(rig);
-    this.router.navigateByUrl('/rigs');
+    this.rigService.addRig(rig).subscribe(() => {
+      this.router.navigateByUrl('/rigs');
+    })
   }
 }

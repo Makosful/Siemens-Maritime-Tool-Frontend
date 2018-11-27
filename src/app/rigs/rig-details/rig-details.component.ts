@@ -14,6 +14,8 @@ export class RigDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.rig = this.rigService.getRigById(id);
+    this.rigService.getRigById(id).subscribe( rigFromApi => {
+    this.rig = rigFromApi;
+    });
   }
 }

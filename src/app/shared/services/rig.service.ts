@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class RigService {
   apiUrl = null ; // TODO set API Url
-
+  baseUrl = null;
   rigs: Rig[];
   id = 1;
   constructor(private httpclient: HttpClient) {
@@ -101,23 +101,26 @@ export class RigService {
     return this.httpclient.get<Rig[]>(this.apiUrl);
   }
 
-  getRigById(id: number) {
-    return this.rigs.find(rig => rig.id === id);
+  getRigById(id: number): Observable<Rig> {
+    // return this.rigs.find(rig => rig.id === id);
+    return this.httpclient.get<Rig>(this.apiUrl + '/' + id);
   }
 
-  addRig(rig: Rig) {
-    rig.id = this.id++;
-    this.rigs.push(rig);
+  addRig(rig: Rig): Observable<Rig> {
+    /*rig.id = this.id++;
+    this.rigs.push(rig);*/
+    return this.httpclient.post<Rig>(this.apiUrl, rig);
   }
 
-  updateRig(rig: Rig) {
-    const rigUpdate = this.rigs.find(r => r.id === rig.id);
+  updateRig(rig: Rig): Observable<Rig> {
+    /*const rigUpdate = this.rigs.find(r => r.id === rig.id);
     const i = this.rigs.indexOf(rigUpdate);
-    this.rigs[i] = rig;
+    this.rigs[i] = rig;*/
+    return this.httpclient.put<Rig>(this.apiUrl + '/' + rig.id, rig);
   }
 
-  deleteRig(id: number) {
-    this.rigs = this.rigs.filter(rig => rig.id !== id);
-    console.log(id);
+  deleteRig(id: number): Observable<any> {
+    return this.httpclient.delete(this.apiUrl + '/' + id);
+    // this.rigs = this.rigs.filter(rig => rig.id !== id);
   }
 }

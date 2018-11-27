@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {RigService} from '../shared/services/rig.service';
 import {MapService} from '../shared/services/map.service';
 import {Rig} from '../shared/models/rig';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-googlemap',
@@ -36,7 +37,7 @@ export class GoggleMapComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.rigs = this.rigService.getRigs();
+    return this.rigService.getRigs();
   }
 
 }

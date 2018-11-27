@@ -21,7 +21,8 @@ export class RigListComponent implements OnInit {
 
   deleteRig(id: number) {
     this.rigService.deleteRig(id);
-    this.rigs = this.rigService.getRigs();
+    this.refresh();
+    // this.rigs = this.rigService.getRigs();
   }
 
   open(content, rig: Rig) {
@@ -29,4 +30,9 @@ export class RigListComponent implements OnInit {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }
 
+  refresh() {
+    this.rigService.getRigs().subscribe(rigList => {
+      this.rigs = rigList;
+    });
+  }
 }

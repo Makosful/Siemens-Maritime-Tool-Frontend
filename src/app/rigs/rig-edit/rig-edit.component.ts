@@ -18,21 +18,24 @@ export class RigEditComponent implements OnInit {
 
   });
 
-  constructor(private route: ActivatedRoute, private rigService: RigService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private rigService: RigService) { }
 
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
-    const rig = this.rigService.getRigById(this.id);
-    this.rigForm.patchValue({
-      id: rig.id,
-      label: rig.label,
-      color: rig.color,
+    this.rigService.getRigById(this.id).subscribe(rigFromApi => {
+      this.rigForm.patchValue({
+        id: rigFromApi.id,
+        label: rigFromApi.label,
+        color: rigFromApi.color,
+      });
     });
   }
 
   editRig() {
     const rig = this.rigForm.value;
     rig.id = this.id;
-    this.rigService.updateRig(rig);
+    this.rigService.updateRig(rig).subscribe(rigUpd => {
+      this.router.navigateByUrl('/rigs'); // return to list of rigs when done updating
+    });
   }
 }
