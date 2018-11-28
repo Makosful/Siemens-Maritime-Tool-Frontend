@@ -1,5 +1,3 @@
-// ENTITY (Rig)
-
 export class Rig {
   id: number;
   name: string;

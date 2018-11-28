@@ -7,6 +7,7 @@ import {RigListComponent} from './rigs/rig-list/rig-list.component';
 import {RigDetailsComponent} from './rigs/rig-details/rig-details.component';
 import {RigAddComponent} from './rigs/rig-add/rig-add.component';
 import {RigEditComponent} from './rigs/rig-edit/rig-edit.component';
+import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'rigs/:id', component:  RigDetailsComponent },
   {path: 'edit-rig/:id', component: RigEditComponent },
   {path: 'add-rig', component: RigAddComponent},
+  {path: 'login', component: LoginComponent},
 ]
 
 @NgModule({
