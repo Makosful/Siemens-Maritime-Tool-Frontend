@@ -16,6 +16,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { RigEditComponent } from './rigs/rig-edit/rig-edit.component';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import {TokenService} from './shared/services/token.service';
+import {RigService} from './shared/services/rig.service';
+import {AuthService} from './shared/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,7 @@ import { LoginComponent } from './login/login.component';
     AgmJsMarkerClustererModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [TokenService, RigService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
