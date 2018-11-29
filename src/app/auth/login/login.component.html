@@ -1,0 +1,20 @@
+<div>
+  <div>
+    <h1>Login</h1>
+      <form [formGroup]="loginGroup" (ngSubmit)="login()">
+        <div fxLayout="column">
+          <div>
+            <input matInput placeholder="E-mail" formControlName="email">
+          </div>
+
+          <div>
+            <input matInput placeholder="Password" type="password" formControlName="password">
+          </div>
+
+          <div fxLayoutAlign="end center">
+            <button mat-raised-button color="primary" type="submit">Login</button>
+          </div>
+        </div>
+      </form>
+  </div>
+</div>

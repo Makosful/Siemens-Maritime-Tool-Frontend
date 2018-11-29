@@ -1,13 +1,15 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../models/user';
-import { BehaviorSubject, Observable, Subject, Subscription} from 'rxjs';
-import { JwtHelperService } from '@auth0/angular-jwt';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class TokenService {
-  public isLoggedIn = new Subject<string>();
+  public isLoggedIn = new BehaviorSubject<boolean>(!!this.getToken());
 
-  constructor() {}
+  constructor() { }
 
   public getToken(): string {
     return localStorage.getItem('token');
@@ -15,7 +17,7 @@ export class TokenService {
 
   public setToken(token: string) {
     localStorage.setItem('token', token);
-    this.isLoggedIn.next(token);
+    this.isLoggedIn.next(!!token);
   }
 
   public clearToken() {

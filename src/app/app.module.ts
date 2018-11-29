@@ -15,7 +15,7 @@ import { RigAddComponent } from './rigs/rig-add/rig-add.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { RigEditComponent } from './rigs/rig-edit/rig-edit.component';
 import {HttpClientModule} from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
+import {LoginComponent} from './auth/login/login.component';
 
 @NgModule({
   declarations: [

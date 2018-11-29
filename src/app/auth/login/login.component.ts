@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
-import {AuthService} from '../shared/services/auth.service';
+import {LoginService} from '../../shared/services/login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
   loginGroup: FormGroup;
-  constructor(private auth: AuthService,
-              private router: Router) {
+  constructor(private auth: LoginService, private router: Router) {
     this.loginGroup = new FormGroup({
-      username: new FormControl(),
+      email: new FormControl(),
       password: new FormControl(),
       remember: new FormControl()
     });
