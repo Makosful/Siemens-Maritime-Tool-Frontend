@@ -3,7 +3,8 @@
     <img src="https://i.imgur.com/RcK0W6n.png" alt="SIEMENS Logo" style="width: 150px; height: 25px;">
   </a>
 
-  <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+  <button class="navbar-toggler" type="button"
+          (click)="toggleNavbar()">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -15,10 +16,10 @@
         <a class="nav-link active" routerLink="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/map" *ngIf="loggedIn">Map</a>
+        <a class="nav-link" routerLink="/map">Map</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link nav-right" href="/rigs" *ngIf="loggedIn">Rigs</a>
+        <a class="nav-link nav-right" href="/rigs">Rigs</a>
       </li>
     </ul>
     
@@ -30,20 +31,8 @@
         <a class="nav-link" href="#">Item 2</a>
       </li>
       <li class="nav-item">
-        <button type="button" class="btn btn-outline-info nav-link nav-right" routerLink="login" *ngIf="!loggedIn">Login <i class="fas fa-sign-in-alt"></i></button>
-        <div class="btn-group">
-          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="loggedIn">
-            {{user}}
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
-        </div>
-        <button type="button" class="btn btn-outline-info nav-link nav-right" routerLink="/" *ngIf="loggedIn">Logout <i class="fas fa-sign-out-alt"></i></button>
+        <button type="button" class="btn btn-outline-info nav-link nav-right" routerLink="login" *ngIf="!loggedIn">Login</button>
+        <button type="button" class="btn btn-outline-info nav-link nav-right" routerLink="/" *ngIf="loggedIn">Logout</button>
       </li>
     </ul>
   </div>

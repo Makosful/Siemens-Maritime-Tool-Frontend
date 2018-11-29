@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../shared/services/auth.service';
-import {TokenService} from '../shared/services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +11,12 @@ import {TokenService} from '../shared/services/token.service';
 export class LoginComponent implements OnInit {
 
   loginGroup: FormGroup;
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(private auth: AuthService,
+              private router: Router) {
     this.loginGroup = new FormGroup({
-      email: new FormControl(),
+      username: new FormControl(),
       password: new FormControl(),
-      // remember: new FormControl()
+      remember: new FormControl()
     });
   }
 
@@ -26,7 +26,10 @@ export class LoginComponent implements OnInit {
   login() {
     this.auth.login(this.loginGroup.value).subscribe(token => {
       if (token) {
-        this.router.navigateByUrl('/');
+        this.router
+          .navigateByUrl('/');
+      } else {
+
       }
     });
   }

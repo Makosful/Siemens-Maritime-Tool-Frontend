@@ -3,9 +3,7 @@ import {User} from '../models/user';
 import { BehaviorSubject, Observable, Subject, Subscription} from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TokenService {
   public isLoggedIn = new Subject<string>();
 
@@ -43,12 +41,6 @@ export class TokenService {
       }
       obs.next(decoded);
     });
-  }
 
-  public getUserEmail(): string {
-    const user = this.getUserFromToken();
-    if (user) {
-      return localStorage.getItem('email');
-    }
   }
 }

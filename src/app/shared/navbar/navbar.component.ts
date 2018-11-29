@@ -37,7 +37,4 @@ export class NavbarComponent implements OnInit, OnDestroy {
     });
   }
 
-  toggleNavbar() {
-    this.navbarOpen = !this.navbarOpen;
-  }
 }

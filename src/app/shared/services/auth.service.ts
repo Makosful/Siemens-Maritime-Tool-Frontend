@@ -3,24 +3,27 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
-import {TokenService} from './token.service';
+import {FormControl, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
 import {User} from '../models/user';
+import {TokenService} from './token.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient,
+  constructor(private httpClient: HttpClient,
               private tokenService: TokenService) { }
 
   public login(user: User): Observable<string> {
-    return this.http.post<string>(environment.baseUrl + '/login', user, {responseType: 'text' as 'json'})
+    return this.httpClient.post<string>(environment.apiUrl + '/login', user, {responseType: 'text' as 'json'})
       .pipe(
         switchMap(token => Observable.create(obs => {
             this.tokenService.setToken(token);
             obs.next(token);
-        }))
+          })
+        )
       );
   }
 
