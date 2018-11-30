@@ -1,9 +1,11 @@
 export class Rig {
-  id: number;
+  imo: number;
   name: string;
   lat: number;
   lng: number;
   label: string;
-  timeStamp?: Date;
-  color?: string;
+  timeStamp: string;
+  type: boolean;
+  status: string;
+  area: string;
 }

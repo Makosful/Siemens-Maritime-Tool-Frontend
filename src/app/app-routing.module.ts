@@ -13,11 +13,11 @@ import {AuthGuard} from './auth/guards/auth.guard';
 
 const routes: Routes = [
   {path: '', component: LandingComponent },
-  {path: 'map', component: GoggleMapComponent, canActivate: [AuthGuard] },
-  {path: 'rigs', component: RigListComponent, canActivate: [AuthGuard] },
-  {path: 'rigs/:id', component:  RigDetailsComponent, canActivate: [AuthGuard] },
-  {path: 'edit-rig/:id', component: RigEditComponent, canActivate: [AuthGuard, Admin] },
-  {path: 'add-rig', component: RigAddComponent , canActivate: [AuthGuard, Admin]},
+  {path: 'map', component: GoggleMapComponent },
+  {path: 'rigs', component: RigListComponent },
+  {path: 'rigs/:id', component:  RigDetailsComponent },
+  {path: 'edit-rig/:id', component: RigEditComponent },
+  {path: 'add-rig', component: RigAddComponent },
   {path: 'login', component: LoginComponent },
 ]
 
