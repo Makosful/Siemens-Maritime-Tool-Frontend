@@ -9,13 +9,22 @@ import {AgmJsMarkerClustererModule} from '@agm/js-marker-clusterer';
 import { LandingComponent } from './landing/landing.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RigListComponent } from './rigs/rig-list/rig-list.component';
-import { RigDetailsComponent } from './rigs/rig-details/rig-details.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RigAddComponent } from './rigs/rig-add/rig-add.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { RigEditComponent } from './rigs/rig-edit/rig-edit.component';
 import {HttpClientModule} from '@angular/common/http';
 import {LoginComponent} from './auth/login/login.component';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDividerModule, MatInputModule,
+  MatListModule, MatMenuModule, MatPaginatorModule,
+  MatProgressSpinnerModule, MatSelectModule,
+  MatToolbarModule
+} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {RigDetailsComponent} from './rigs/rig-details/rig-details.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +46,20 @@ import {LoginComponent} from './auth/login/login.component';
     AgmCoreModule.forRoot({apiKey: 'AIzaSyDT0gn3ZgNZG_WfgXSgANlmK-5Zkhhxm6s'}),
     HttpClientModule,
     AgmJsMarkerClustererModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    // material
+    MatButtonModule,
+    MatListModule,
+    MatCardModule,
+    MatDividerModule,
+    MatProgressSpinnerModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatSelectModule,
+    MatMenuModule,
+    MatPaginatorModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
