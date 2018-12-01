@@ -22,7 +22,7 @@ export class RigAddComponent implements OnInit {
   ngOnInit() {
   }
 
-  checkRig() {
-    return null;
+  addRig() {
+
   }
 }
