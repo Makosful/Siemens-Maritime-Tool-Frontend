@@ -14,15 +14,16 @@ export class RigListComponent implements OnInit {
   constructor(private rigService: RigService, private modalService: NgbModal) { }
 
   ngOnInit() {
-    this.rigService.getRigs().subscribe(rigList => {
+    this.rigs = this.rigService.getFakeRigs();
+    /*this.rigService.getRigs().subscribe(rigList => {
       this.rigs = rigList;
-    });
+    });*/
   }
 
   deleteRig(id: number) {
-    this.rigService.deleteRig(id);
+    // this.rigService.deleteRig(id);
+    this.rigService.deleteFakeRig(id);
     this.refresh();
-    // this.rigs = this.rigService.getRigs();
   }
 
   open(content, rig: Rig) {
@@ -31,8 +32,10 @@ export class RigListComponent implements OnInit {
   }
 
   refresh() {
-    this.rigService.getRigs().subscribe(rigList => {
+    // TODO revert back
+    this.rigs = this.rigService.getFakeRigs();
+    /*this.rigService.getRigs().subscribe(rigList => {
       this.rigs = rigList;
-    });
+    });*/
   }
 }

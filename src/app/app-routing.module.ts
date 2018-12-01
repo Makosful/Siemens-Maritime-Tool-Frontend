@@ -16,8 +16,8 @@ const routes: Routes = [
   {path: 'map', component: GoggleMapComponent },
   {path: 'rigs', component: RigListComponent },
   {path: 'rigs/:id', component:  RigDetailsComponent },
-  {path: 'edit-rig/:id', component: RigEditComponent },
-  {path: 'add-rig', component: RigAddComponent },
+  {path: 'rigs/edit-rig/:id', component: RigEditComponent },
+  {path: 'rigs/add-rig', component: RigAddComponent },
   {path: 'login', component: LoginComponent },
 ]
 

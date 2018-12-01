@@ -14,7 +14,7 @@ export class RigEditComponent implements OnInit {
     rigForm = new FormGroup({
     id: new FormControl(''),
     label: new FormControl(''),
-    color: new FormControl(''),
+    type: new FormControl(''),
 
   });
 
@@ -26,7 +26,7 @@ export class RigEditComponent implements OnInit {
       this.rigForm.patchValue({
         id: rigFromApi.id,
         label: rigFromApi.label,
-        color: rigFromApi.color,
+        type: rigFromApi.type,
       });
     });
   }

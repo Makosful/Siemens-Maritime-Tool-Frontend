@@ -18,7 +18,6 @@ export class GoggleMapComponent implements OnInit {
   rigs: Rig[];
   constructor(private rigService: RigService, private mapService: MapService ) { }
 
- // mouse-over = hoverOn mouse-out = hoverOff
   hoverOn(event) {
     console.log(event);
     // debugging
@@ -37,7 +36,8 @@ export class GoggleMapComponent implements OnInit {
   }
 
   ngOnInit() {
-    return this.rigService.getRigs();
+    // TODO revert this
+    this.rigs = this.rigService.getFakeRigs();
+    // return this.rigService.getRigs();
   }
-
 }

@@ -13,9 +13,17 @@ export class RigDetailsComponent implements OnInit {
   constructor(private rigService: RigService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
+    /*const id = +this.route.snapshot.paramMap.get('id');
     this.rigService.getRigById(id).subscribe( rigFromApi => {
     this.rig = rigFromApi;
-    });
+    this.fakeRigDetails();
+    });*/
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.rig = this.rigService.getFakeRigById(id);
+  }
+
+  fakeRigDetails() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.rig = this.rigService.getFakeRigById(id);
   }
 }

@@ -6,15 +6,11 @@
     [title]="'Id: ' + rig.id + ' | Name:' + ' ' + rig.name"
     [latitude]="rig.lat"
     [longitude]="rig.lng"
-    [label]="{
-    color: '#fff',
-    fontWeight: 'bold',
-    text: rig.label
-}">
+    [label]="{fontWeight: 'bold', text: rig.label}">
 
     <agm-info-window #infowindow>
       <div class="card mb-4 shadow-m">
-        <h4 class="card-title"><img src="https://i.imgur.com/pkxnWbG.png" alt="Card image" style="height: 25px; width: 25px; margin-right: 5px;">{{rig.name}}</h4>
+        <h4 class="card-title"><img src="https://i.imgur.com/pkxnWbG.png" alt="Card image" style="height: 20px; width: 20px; margin-right: 5px;">{{rig.name}}</h4>
         <div class="card-body">
           <p class="card-text"><strong>Id: {{rig.id}}</strong></p>
           <p class="card-text"><strong>Lat: {{rig.lat}}</strong></p>
