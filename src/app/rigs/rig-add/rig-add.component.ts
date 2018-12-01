@@ -13,11 +13,9 @@ export class RigAddComponent implements OnInit {
     rigForm = new FormGroup({
     id: new FormControl(''),
     label: new FormControl(''),
-    color: new FormControl(''),
+    type: new FormControl(''),
 
   });
-
-    rigFound = false;
 
   constructor(private rigService: RigService, private router: Router) { }
 
@@ -25,9 +23,6 @@ export class RigAddComponent implements OnInit {
   }
 
   checkRig() {
-    const rig = this.rigForm.value;
-    this.rigService.addRig(rig).subscribe(() => {
-      this.router.navigateByUrl('/rigs');
-    })
+    return null;
   }
 }

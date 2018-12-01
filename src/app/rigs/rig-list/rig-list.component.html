@@ -1,5 +1,5 @@
 <div class="container-fluid" *ngIf="rigs">
-  <button routerLink="/add-rig" class="btn btn-outline-primary mt-1">Add rig</button>
+  <button class="btn btn-outline-primary mr-1" routerLink="/rigs/add-rig">Add</button>
   <div class="card-deck">
     <div class="card my-3 text-white bg-dark rounded" style="min-width: 14em;" *ngFor="let rig of rigs">
       <div class="card-header"><h5>{{rig.name}}</h5></div>
@@ -28,6 +28,7 @@
 <div class="container-fluid" *ngIf="!rigs">
   <img src="https://i.imgur.com/KMaAB8Q.gif" class="center mt-3" style="height: 100px; width: 250px;" alt="Loading">
 </div>
+
 <!-- MODAL POPUP (Delete) -->
 <ng-template #modal let-modal>
   <div class="modal-header">
