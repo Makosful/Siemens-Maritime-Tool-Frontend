@@ -2,41 +2,38 @@
   <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
           [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample"><i class="fas fa-bars"></i></button>
   <div class="row">
-    <ngb-accordion  activeIds="ngb-panel-0" [ngbCollapse]="isCollapsed">
-      <ngb-panel class="col-3">
-        <ng-template ngbPanelContent>
-          <div>
-            <label for="typeahead-config">Search for a rig:</label>
-            <input id="typeahead-config" type="text" class="form-control" />
-            <div class="list-group" style="max-height: 450px; overflow-y: scroll;">
-              <div class="card" *ngFor="let rig of rigs">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <span class="card-text">{{rig.id}} - {{rig.name}}</span>
-                    </div>
-                    <div class="col">
-                      <button class="btn btn-secondary ml-1" style="width: 150px; height: 35px;" (click)="showMarkerOnMap(rig)">Show on map</button>
-                    </div>
-                  </div>
+    <div class="card col-3" [ngbCollapse]="isCollapsed">
+      <div class="card-body">
+        <label>Search for a rig:</label>
+        <input type="text" placeholder="Search..." class="form-control" />
+        <div class="card-text mt-1" style="overflow-y: scroll; max-height: 450px;">
+          <div class="card" *ngFor="let rig of rigs">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <span class="card-text">{{rig.id}} <br>{{rig.name}} ({{rig.label}})</span>
+                </div>
+                <div class="col">
+                  <button class="btn btn-secondary ml-1 mt-2" style="width: 150px; height: 35px;" (click)="showMarkerOnMap(rig, m)">Locate</button>
                 </div>
               </div>
             </div>
           </div>
-        </ng-template>
-      </ngb-panel>
-    </ngb-accordion>
+        </div>
+      </div>
+    </div>
     <div class="col">
       <agm-map id="map" (mapReady)="mapReady($event)" [latitude]="latitude" [longitude]="longitude" [mapTypeControl]="true" [mapTypeId]="'hybrid'">
         <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m"[minimumClusterSize]="3">
           <agm-marker
-            *ngFor="let rig of rigs; let i = index; let m of markers"
-            (markerClick)="clickedMarker(rig, infowindow)" (mouseOver)="hoverOn(infowindow)" (mouseOut)="hoverOff(infowindow)"
+            *ngFor="let rig of rigs"
+            (markerClick)="clickedMarker(infowindow, m)"
             [title]="'Id: ' + rig.id + ' | Name:' + ' ' + rig.name"
             [latitude]="rig.lat"
             [longitude]="rig.lng"
             [label]="{fontWeight: 'bold', text: rig.label}"
-            [iconUrl]="assets/rig.svg">
+            [iconUrl]="'assets/rig-icon50x50.png'">
+">
 
             <agm-info-window [isOpen]="rig.isOpen" #infoWindow>
               <div class="card mb-4 shadow-m">
@@ -49,7 +46,6 @@
                 </div>
               </div>
             </agm-info-window>
-
           </agm-marker>
         </agm-marker-cluster>
       </agm-map>

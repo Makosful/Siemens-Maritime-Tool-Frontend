@@ -21,25 +21,15 @@ export class GoggleMapComponent implements OnInit {
   rigs: Rig[];
   gMap: any;
   isCollapsed = false;
-  markers: any;
 
   constructor(private rigService: RigService, private mapService: MapService) { }
 
   protected mapReady(map) {
     this.gMap = map;
+
   }
 
-  hoverOn(event) {
-    console.log(event);
-    // debugging
-  }
-
-  hoverOff(event) {
-    console.log(event);
-    // debugging
-  }
-
-  clickedMarker(window) {
+  clickedMarker(window, m: any) {
     if (this.infoWindow) {
       this.infoWindow.close();
     }
@@ -51,11 +41,6 @@ export class GoggleMapComponent implements OnInit {
     this.rigs = this.rigService.getFakeRigs();
     // return this.rigService.getRigs();
   }
-
-  searchRig = (text$: Observable<string>) => text$.pipe(debounceTime(750), distinctUntilChanged(),
-    map(userInput => userInput.length < 3 ? [] : this.rigs.filter(rig => rig.name.toLowerCase().startsWith(userInput.toLocaleLowerCase()))))
-
-  // TODO fix (finds object, needs to find object name)
 
   showMarkerOnMap(rig: Rig) {
     if (this.gMap) {
