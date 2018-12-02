@@ -1,8 +1,40 @@
 <div class="container-fluid">
+  <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample"><i class="fas fa-bars"></i></button>
   <div class="row">
-    <div>
-    </div>
-    <div>
+    <ngb-accordion class="col-3" activeIds="ngb-panel-0" [ngbCollapse]="isCollapsed">
+      <ngb-panel>
+        <ng-template ngbPanelTitle>
+          <div><i class="fas fa-list"></i> List of markers</div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <div>
+            <div class="list-group" style="max-height: 450px; overflow-y: scroll;">
+              <div class="card" *ngFor="let rig of rigs">
+                <div class="card-body">
+                  <div class="col">
+                    <span class="card-text">{{rig.id}} - {{rig.name}}</span>
+                  </div>
+                  <div class="col">
+                    <button class="btn btn-secondary ml-1" style="width: 150px; height: 35px;" (click)="showMarkerOnMap()">Show on map</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel>
+        <ng-template ngbPanelTitle>
+          <div><i class="fas fa-search-location"></i> Search for a marker</div>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <label for="typeahead-config">Search for a Rig:</label>
+          <input id="typeahead-config" type="text" class="form-control" [ngbTypeahead]="searchRig" />
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+    <div class="col-9">
       <agm-map id="map" [latitude]="latitude" [longitude]="longitude" [mapTypeControl]="true" [mapTypeId]="'hybrid'">
         <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m"[minimumClusterSize]="3">
           <agm-marker
@@ -31,3 +63,5 @@
     </div>
   </div>
 </div>
+
+

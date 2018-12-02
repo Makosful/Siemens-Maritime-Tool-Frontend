@@ -3,11 +3,8 @@
     <img src="https://i.imgur.com/RcK0W6n.png" alt="SIEMENS Logo" style="width: 150px; height: 25px;">
   </a>
 
-  <button class="navbar-toggler" type="button"
-          (click)="toggleNavbar()">
-    <span class="navbar-toggler-icon"></span>
+  <button class="navbar-toggler" type="button"(click)="toggleNavbar()"><span class="navbar-toggler-icon"></span>
   </button>
-
 
   <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
     <ul class="navbar-nav mr-auto"> <!--LEFT NAV-->
@@ -34,5 +31,6 @@
         <button type="button" class="btn btn-outline-info nav-link nav-right" routerLink="/" *ngIf="loggedIn" (click)="logOut($event)">Logout</button>
       </li>
     </ul>
+
   </div>
 </nav>
