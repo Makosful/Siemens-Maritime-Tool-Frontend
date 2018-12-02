@@ -18,7 +18,6 @@ export class GoggleMapComponent implements OnInit {
 
   rigs: Rig[];
   isCollapsed = false;
-  model: any;
 
   constructor(private rigService: RigService, private mapService: MapService ) { }
 
@@ -49,6 +48,5 @@ export class GoggleMapComponent implements OnInit {
     map(userInput => userInput.length < 3 ? [] : this.rigs.filter(rig => rig.name.toLowerCase().startsWith(userInput.toLocaleLowerCase()))))
 
   showMarkerOnMap() {
-
   }
 }

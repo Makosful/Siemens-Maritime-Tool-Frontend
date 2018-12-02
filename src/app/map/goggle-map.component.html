@@ -12,10 +12,10 @@
             <div class="list-group" style="max-height: 450px; overflow-y: scroll;">
               <div class="card" *ngFor="let rig of rigs">
                 <div class="card-body">
-                  <div class="col">
+                  <div class="col-auto">
                     <span class="card-text">{{rig.id}} - {{rig.name}}</span>
                   </div>
-                  <div class="col">
+                  <div class="col-auto">
                     <button class="btn btn-secondary ml-1" style="width: 150px; height: 35px;" (click)="showMarkerOnMap()">Show on map</button>
                   </div>
                 </div>
@@ -52,7 +52,7 @@
                   <p class="card-text"><strong>Id: {{rig.id}}</strong></p>
                   <p class="card-text"><strong>Lat: {{rig.lat}}</strong></p>
                   <p class="card-text"><strong>Lng: {{rig.lng}}</strong></p>
-                  <a href="#" class="btn btn-primary">Show details</a>
+                  <a href="rigs/{{rig.id}}" class="btn btn-primary">Show details</a>
                 </div>
               </div>
             </agm-info-window>
