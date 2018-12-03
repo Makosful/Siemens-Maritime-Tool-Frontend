@@ -28,7 +28,7 @@ export class LoginService {
   public logout(): Observable<boolean> {
     return Observable.create(obs => {
       this.tokenService.clearToken();
-      obs.next(!this.tokenService.getToken());
+      obs.next(!this.tokenService.getJwtToken());
     });
   }
 }

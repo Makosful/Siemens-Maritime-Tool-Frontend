@@ -7,12 +7,17 @@ import {User} from '../models/user';
   providedIn: 'root'
 })
 export class TokenService {
-  public isLoggedIn = new BehaviorSubject<boolean>(!!this.getToken());
+  public isLoggedIn = new BehaviorSubject<boolean>(!!this.getJwtToken());
 
   constructor() { }
 
-  public getToken(): string {
+  public getJwtToken(): string {
+    console.log(localStorage.getItem('token'));
     return localStorage.getItem('token');
+  }
+
+  public getToken(): string {
+    return JSON.parse(localStorage.getItem('token')).token;
   }
 
   public setToken(token: string) {
@@ -28,13 +33,13 @@ export class TokenService {
   public isAuthenticated(): Observable<boolean> {
     // get the token aand notify listeners!
     return Observable.create(obs => {
-      obs.next(this.getToken());
+      obs.next(this.getJwtToken());
     });
   }
 
   public getUserFromToken(): Observable<User> {
     return Observable.create(obs => {
-      const token = this.getToken();
+      const token = this.getJwtToken();
       let decoded: User;
       if (token) {
         const jwt = new JwtHelperService();

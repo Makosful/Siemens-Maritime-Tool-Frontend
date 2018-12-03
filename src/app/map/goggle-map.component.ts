@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {RigService} from '../shared/services/rig.service';
 import {MapService} from '../shared/services/map.service';
 import {Rig} from '../shared/models/rig';
-import {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
-import {google, GoogleMap} from '@agm/core/services/google-maps-types';
+import {google, GoogleMap, InfoWindow} from '@agm/core/services/google-maps-types';
 import {GoogleMapsAPIWrapper} from '@agm/core';
 
 @Component({
@@ -13,32 +12,32 @@ import {GoogleMapsAPIWrapper} from '@agm/core';
   styleUrls: ['./goggle-map.component.css']
 })
 export class GoggleMapComponent implements OnInit {
+
+  constructor(private rigService: RigService, private mapService: MapService) { }
   // EASV geo location
   latitude = 55.487784;
   longitude = 8.446826;
-  infoWindow;
 
   rigs: Rig[];
   gMap: any;
   isCollapsed = false;
+  openedWindow = 0;
 
-  constructor(private rigService: RigService, private mapService: MapService) { }
-
-  protected mapReady(map) {
-    this.gMap = map;
-
+  clickedMarker(window, rig) {
+    this.openWindow(rig.id);
   }
 
-  clickedMarker(window, m: any) {
-    if (this.infoWindow) {
-      this.infoWindow.close();
-    }
-    this.infoWindow = window;
+  openWindow(id) {
+    this.openedWindow = id;
+  }
+
+  isInfoWindowOpen(id) {
+    return this.openedWindow === id;
   }
 
   ngOnInit() {
     // TODO revert this
-    this.rigs = this.rigService.getFakeRigs();
+    this.rigs = this.mapService.populateMarkerList();
     // return this.rigService.getRigs();
   }
 
@@ -46,6 +45,10 @@ export class GoggleMapComponent implements OnInit {
     if (this.gMap) {
       this.gMap.setCenter({ lat: rig.lat, lng: rig.lng});
     }
-    console.log('clicked', rig, { lat: rig.lat, lng: rig.lng});
+    this.openWindow(rig.id);
+  }
+
+  searchForRig() {
+
   }
 }

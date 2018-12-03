@@ -29,19 +29,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
       ).subscribe(user => {
         this.displayName = user ? user.email : '';
       });
-    /*
-        this.subscription = this.tokenService.isLoggedIn
-          .subscribe(loggedIn => {
-            this.loggedIn = loggedIn;
-            if (this.loggedIn) {
-              this.tokenService.getUserFromToken().subscribe(
-                user => {
-                  this.displayName = user.displayName;
-                }
-              );
-            }
-        });
-    */
   }
 
   ngOnDestroy(): void {

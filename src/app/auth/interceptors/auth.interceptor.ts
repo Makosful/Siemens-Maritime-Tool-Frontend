@@ -9,7 +9,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private auth: TokenService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this.auth.getToken();
+    const token = this.auth.getJwtToken();
     if (token) {
       request = request.clone({
         setHeaders: { Authorization: `Bearer ${token}`}

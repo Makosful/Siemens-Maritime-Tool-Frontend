@@ -30,8 +30,8 @@ export class RigService {
         imo: 12345678, // IMO
         label: 'T.R', // initials
         name: 'Test Rig', // name
-        lat: 55.68083343, // latitude
-        lng: 8.86022396, // longitude
+        lat: 54.5458952, // latitude
+        lng: 7.80766282, // longitude
         type: 'Semi Submersible', // type
         timeStamp: null, // position received timestamp
         status: null, // status
@@ -42,8 +42,8 @@ export class RigService {
         imo: 12345678, // IMO
         label: 'T.R.1', // initials
         name: 'Test Rig 1', // name
-        lat: 55.68093343, // latitude
-        lng: 8.86062396, // longitude
+        lat: 56.28678858, // latitude
+        lng: 8.91543887, // longitude
         type: 'Semi Submersible', // type
         timeStamp: null, // position received timestamp
         status: null, // status
@@ -54,8 +54,8 @@ export class RigService {
         imo: 12345678, // IMO
         label: 'T.R.2', // initials
         name: 'Test Rig 2', // name
-        lat: 55.68383343, // latitude
-        lng: 8.86122396, // longitude
+        lat: 54.67637221, // latitude
+        lng: 10.37901072, // longitude
         type: 'Jackup', // type
         timeStamp: null, // position received timestamp
         status: null, // status
@@ -66,8 +66,8 @@ export class RigService {
         imo: 12345679, // IMO
         label: 'T.R.3', // initials
         name: 'Test Rig 3', // name
-        lat: 55.68583343, // latitude
-        lng: 8.86222396, // longitude
+        lat: 55.85055695, // latitude
+        lng: 10.17336934, // longitude
         type: 'Semi Submersible', // type
         timeStamp: null, // position received timestamp
         status: null, // status
