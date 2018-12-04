@@ -3,10 +3,11 @@
   <div class="row">
     <div class="card col-3" [ngbCollapse]="isCollapsed">
       <div class="card-body">
+
         <label>Search for a rig:</label>
-        <input type="text" placeholder="Search..." class="form-control" (keydown)="searchForRig()"/>
+        <input type="text" [(ngModel)]="input" placeholder="Search..."  (keydown)="searchForRig(searchText)"/>
         <div class="card-text mt-1" style="overflow-y: scroll; ">
-          <div class="card" *ngFor="let rig of rigs">
+          <div class="card" *ngFor="let rig of rigs | filterRigs:input">
             <div class="card-body">
               <div class="row">
                 <div class="col">
@@ -39,7 +40,9 @@
                 <h3 class="card-title">{{rig.name}}</h3>
                 <div class="card-body">
                   <p class="card-text"><strong>Id: {{rig.id}}</strong></p>
+                  <p class="card-text"><strong>IMO: {{rig.imo}}</strong></p>
                   <p class="card-text"><strong>Type: {{rig.type}}</strong></p>
+
                   <p class="card-text"><strong>Area: (virker ikke) {{rig.area}}</strong></p>
                   <div class="btn-group">
                     <a href="rigs/{{rig.id}}" class="btn btn-primary mr-2">Show details</a>

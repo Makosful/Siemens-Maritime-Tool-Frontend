@@ -2,14 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {RigService} from '../shared/services/rig.service';
 import {MapService} from '../shared/services/map.service';
 import {Rig} from '../shared/models/rig';
-import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
-import {google, GoogleMap, InfoWindow} from '@agm/core/services/google-maps-types';
-import {GoogleMapsAPIWrapper} from '@agm/core';
 
 @Component({
   selector: 'app-googlemap',
   templateUrl: './goggle-map.component.html',
-  styleUrls: ['./goggle-map.component.css']
+  styleUrls: ['./goggle-map.component.css'],
 })
 export class GoggleMapComponent implements OnInit {
 
@@ -46,9 +43,5 @@ export class GoggleMapComponent implements OnInit {
       this.gMap.setCenter({ lat: rig.lat, lng: rig.lng});
     }
     this.openWindow(rig.id);
-  }
-
-  searchForRig() {
-
   }
 }

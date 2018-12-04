@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RigListComponent } from './rigs/rig-list/rig-list.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RigAddComponent } from './rigs/rig-add/rig-add.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RigEditComponent } from './rigs/rig-edit/rig-edit.component';
 import {HttpClientModule} from '@angular/common/http';
 import {LoginComponent} from './auth/login/login.component';
@@ -25,6 +25,7 @@ import {
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RigDetailsComponent} from './rigs/rig-details/rig-details.component';
+import { FilterRigsPipe } from './map/filter-rigs.pipe';
 
 @NgModule({
   declarations: [
@@ -37,9 +38,11 @@ import {RigDetailsComponent} from './rigs/rig-details/rig-details.component';
     RigAddComponent,
     RigEditComponent,
     LoginComponent,
+    FilterRigsPipe,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     NgbModule,
     ReactiveFormsModule,
