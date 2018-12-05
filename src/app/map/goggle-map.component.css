@@ -1,7 +1,9 @@
 agm-map {
-  height: 800px;
+  height: 100%;
 }
 
-.sidebar {
-  height: 585px;
+@media screen and (max-width: 992px) {
+  agm-map {
+    height: 500px;
+  }
 }
