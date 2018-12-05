@@ -19,6 +19,7 @@ export class GoggleMapComponent implements OnInit {
   gMap: any;
   isCollapsed = false;
   openedWindow = 0;
+  input: any;
 
   clickedMarker(window, rig) {
     this.openWindow(rig.id);

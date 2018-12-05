@@ -1,23 +1,36 @@
 <div class="container-fluid" *ngIf="rig">
-  <div class="card-deck">
-    <div class="card my-3 col-3 text-white bg-dark rounded" style="min-width: 14em;">
-      <div class="card-header"><h5>{{rig.name}}</h5></div>
-      <div class="card-body">
-        <p class="card-text">
-          ID: <strong>{{rig.id}}</strong><br>
-          IMO: <strong>{{rig.imo}}</strong><br>
-          Latitude: <strong>{{rig.lat}}</strong><br>
-          Longitude: <strong>{{rig.lat}}</strong><br>
-          Type: <strong>{{rig.type}}</strong><br>
-          Status: <strong>{{rig.status}}</strong><br>
-          Area: <strong>{{rig.area}}</strong><br></p>
-      </div>
-      <div class="card-footer">
-        <span class="text-muted">Last updated on: {{rig.timeStamp}}</span>
-        <div class="btn-group float-right">
-          <button class="btn btn-warning mr-1" routerLink="/rigs/edit-rig/{{rig.id}}">Edit</button>
+  <div class="row">
+    <div class="col-3">
+        <div class="card text-white bg-dark rounded">
+          <div class="card-header"><h5>{{rig.name}}</h5></div>
+          <div class="card-body">
+            <p class="card-text">
+              ID: <strong>{{rig.id}}</strong><br>
+              IMO: <strong>{{rig.imo}}</strong><br>
+              Latitude: <strong>{{rig.lat}}</strong><br>
+              Longitude: <strong>{{rig.lat}}</strong><br>
+              Type: <strong>{{rig.type}}</strong><br>
+              Status: <strong>{{rig.status}}</strong><br>
+              Area: <strong>{{rig.area}}</strong><br></p>
+          </div>
+          <div class="card-footer">
+            <span class="text-muted">Last updated on: {{rig.timeStamp}}</span>
+            <div class="btn-group float-right">
+              <button class="btn btn-warning mr-1" routerLink="/rigs/edit-rig/{{rig.id}}">Edit</button>
+            </div>
+          </div>
         </div>
-      </div>
+    </div>
+    <div class="col-9">
+      <agm-map id="map" [latitude]="rig.lat" [longitude]="rig.lng" [mapTypeControl]="true" [mapTypeId]="'hybrid'">
+        <agm-marker
+          [title]="'Id: ' + rig.id + ' | Name:' + ' ' + rig.name"
+          [latitude]="rig.lat"
+          [longitude]="rig.lng"
+          [label]="{fontWeight: 'bold', text: rig.label, color: 'yellow'}"
+          [iconUrl]="'assets/rig-icon50x50b.png'">
+        </agm-marker>
+      </agm-map>
     </div>
   </div>
 </div>

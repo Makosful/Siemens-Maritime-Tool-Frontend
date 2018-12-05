@@ -10,6 +10,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class RigDetailsComponent implements OnInit {
   rig: Rig;
+  openedWindow = 0;
+
   constructor(private rigService: RigService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -25,5 +27,19 @@ export class RigDetailsComponent implements OnInit {
   fakeRigDetails() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.rig = this.rigService.getFakeRigById(id);
+  }
+
+
+
+  clickedMarker(window, rig) {
+    this.openWindow(rig.id);
+  }
+
+  openWindow(id) {
+    this.openedWindow = id;
+  }
+
+  isInfoWindowOpen(id) {
+    return this.openedWindow === id;
   }
 }
