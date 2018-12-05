@@ -1,6 +1,7 @@
 <div class="container-fluid" *ngIf="rig">
   <div class="row">
-    <div class="col-3">
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card-body">
         <div class="card text-white bg-dark rounded">
           <div class="card-header"><h5>{{rig.name}}</h5></div>
           <div class="card-body">
@@ -20,15 +21,17 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
-    <div class="col-9">
+
+    <div class="col-12 col-sm-12 col-lg-8">
       <agm-map id="map" [latitude]="rig.lat" [longitude]="rig.lng" [mapTypeControl]="true" [mapTypeId]="'hybrid'">
         <agm-marker
           [title]="'Id: ' + rig.id + ' | Name:' + ' ' + rig.name"
           [latitude]="rig.lat"
           [longitude]="rig.lng"
           [label]="{fontWeight: 'bold', text: rig.label, color: 'yellow'}"
-          [iconUrl]="'assets/rig-icon50x50b.png'">
+          [iconUrl]="'assets/rig-icon.png'">
         </agm-marker>
       </agm-map>
     </div>
