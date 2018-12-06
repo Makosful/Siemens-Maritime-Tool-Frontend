@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import {Rig} from '../models/rig';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {environment} from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RigService {
-  apiUrl = null ; // TODO set API Url
-  baseUrl = null;
+  apiUrl =  environment.apiUrl + '/api' + '/rigs'; // TODO set API Url
+  baseUrl = environment.apiUrl;
   rigs: Rig[];
   id = 1;
   constructor(private httpclient: HttpClient) {
-    this.rigs = [
+    /* this.rigs = [
       {
         id: this.id,
         imo: 8767288, // IMO
@@ -74,31 +75,30 @@ export class RigService {
         area: null, // area
       },
     ];
+    */
   }
 
   getFakeRigs() {
-    return this.rigs;
+    // return this.rigs;
   }
 
   getFakeRigById(id: number) {
-    return this.rigs.find(rig => rig.id === id);
+    // return this.rigs.find(rig => rig.id === id);
   }
 
   deleteFakeRig(id: number) {
-    this.rigs = this.rigs.filter(rig => rig.id !== id);
+    // this.rigs = this.rigs.filter(rig => rig.id !== id);
   }
 
   updateFakeRig(rig: Rig) {
-    // TODO Call Rest API later!!!!
-    const rigToUpdate = this.rigs.find(r => rig.id === r.id);
+    /* const rigToUpdate = this.rigs.find(r => rig.id === r.id);
     const index = this.rigs.indexOf(rigToUpdate);
-    this.rigs[index] = rig;
+    this.rigs[index] = rig; */
   }
 
   addFakeRig(rig: Rig) {
-    // TODO Call Rest API later!!!!
-    rig.id = this.id++;
-    this.rigs.push(rig);
+    /* rig.id = this.id++;
+    this.rigs.push(rig); */
   }
 
   // REAL REQUESTS BELOW

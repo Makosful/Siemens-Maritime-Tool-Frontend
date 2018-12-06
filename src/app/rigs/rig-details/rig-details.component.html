@@ -17,7 +17,7 @@
           <div class="card-footer">
             <span class="text-muted">Last updated on: {{rig.timeStamp}}</span>
             <div class="btn-group float-right">
-              <button class="btn btn-warning mr-1" routerLink="/rigs/edit-rig/{{rig.id}}">Edit</button>
+              <button class="btn btn-warning mr-1" routerLink="/rigs/edit-rig/{{rig.imo}}">Edit</button>
             </div>
           </div>
         </div>
@@ -28,7 +28,7 @@
       <agm-map id="map" [latitude]="rig.lat" [longitude]="rig.lng" [mapTypeControl]="true" [mapTypeId]="'hybrid'">
         <agm-marker
           [title]="'Id: ' + rig.id + ' | Name:' + ' ' + rig.name"
-          [latitude]="rig.lat"
+          [latitude]="rig."
           [longitude]="rig.lng"
           [label]="{fontWeight: 'bold', text: rig.label, color: 'yellow'}"
           [iconUrl]="'assets/rig-icon.png'">

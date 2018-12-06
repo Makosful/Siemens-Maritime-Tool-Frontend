@@ -12,11 +12,11 @@ import {AuthGuard} from './auth/guards/auth.guard';
 import {RigAddComponent} from './rigs/rig-add/rig-add.component';
 
 const routes: Routes = [
-  {path: '', component: LandingComponent },
+  {path: '', component: LandingComponent, canActivate: [AuthGuard]},
   {path: 'map', component: GoggleMapComponent },
   {path: 'rigs', component: RigListComponent },
-  {path: 'rigs/:id', component:  RigDetailsComponent },
-  {path: 'rigs/edit-rig/:id', component: RigEditComponent },
+  {path: 'rigs/:imo', component:  RigDetailsComponent },
+  {path: 'rigs/edit-rig/:imo', component: RigEditComponent },
   {path: 'rigs/add-rig', component: RigAddComponent },
   {path: 'login', component: LoginComponent },
 ]

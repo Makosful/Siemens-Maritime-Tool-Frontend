@@ -1,23 +1,34 @@
-<form [formGroup]="rigForm" (ngSubmit)="editRig()">
+<div class="container-fluid" *ngIf="rig">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card-body">
+        <div class="card text-white bg-dark rounded">
+          <div class="card-header"><h5>{{rig.name}}</h5></div>
+          <div class="card-body">
+            <div class="card-text">
+              <form [formGroup]="rigForm" (ngSubmit)="editRig()">
+                <label>
+                  New IMO:
+                  <input type="text" formControlName="imo" placeholder="{{rig.imo}}">
+                </label>
+                <label>
+                  Label:
+                  <input type="text" formControlName="label" placeholder="{{rig.label}}">
+                </label>
+                <label>
+                  Type:
+                  <select class="form-control" id="type">
+                    <option hidden selected>{{rig.type}}</option>
+                    <option>Jack-up</option>
+                    <option>Semi-Submersible</option>
+                  </select>
+                </label>
+                <button type="submit">Edit rig</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <label>
-    Id:
-    <input type="text" formControlName="id">
-  </label>
-
-  <label>
-    Label:
-    <input type="text" formControlName="label">
-  </label>
-
-  <label>
-    Type:
-    <select class="form-control" id="type">
-      <option>Jack-up</option>
-      <option>Semi-Submersible</option>
-    </select>
-  </label>
-
-  <button type="submit">Edit rig</button>
-
-</form>

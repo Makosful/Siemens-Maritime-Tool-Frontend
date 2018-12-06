@@ -9,10 +9,10 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./rig-edit.component.css']
 })
 export class RigEditComponent implements OnInit {
-    id: number;
+    imo: number;
 
     rigForm = new FormGroup({
-    id: new FormControl(''),
+    imo: new FormControl(''),
     label: new FormControl(''),
     type: new FormControl(''),
 
@@ -21,10 +21,10 @@ export class RigEditComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private rigService: RigService) { }
 
   ngOnInit() {
-    this.id = +this.route.snapshot.paramMap.get('id');
-    this.rigService.getRigById(this.id).subscribe(rigFromApi => {
+    this.imo = +this.route.snapshot.paramMap.get('imo');
+    this.rigService.getRigById(this.imo).subscribe(rigFromApi => {
       this.rigForm.patchValue({
-        id: rigFromApi.id,
+        imo: rigFromApi.imo,
         label: rigFromApi.label,
         type: rigFromApi.type,
       });
@@ -33,7 +33,7 @@ export class RigEditComponent implements OnInit {
 
   editRig() {
     const rig = this.rigForm.value;
-    rig.id = this.id;
+    rig.imo = this.imo;
     this.rigService.updateRig(rig).subscribe(rigUpd => {
       this.router.navigateByUrl('/rigs'); // return to list of rigs when done updating
     });
