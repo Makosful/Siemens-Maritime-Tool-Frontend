@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {RigService} from '../shared/services/rig.service';
-import {MapService} from '../shared/services/map.service';
 import {Rig} from '../shared/models/rig';
 
 @Component({
@@ -10,7 +9,7 @@ import {Rig} from '../shared/models/rig';
 })
 export class GoggleMapComponent implements OnInit {
 
-  constructor(private rigService: RigService, private mapService: MapService) { }
+  constructor(private rigService: RigService) { }
   // EASV geo location
   latitude = 55.487784;
   longitude = 8.446826;
@@ -34,9 +33,7 @@ export class GoggleMapComponent implements OnInit {
   }
 
   ngOnInit() {
-    // TODO revert this
-    this.rigs = this.mapService.populateMarkerList();
-    // return this.rigService.getRigs();
+    return this.rigService.getRigs();
   }
 
   showMarkerOnMap(rig: Rig) {

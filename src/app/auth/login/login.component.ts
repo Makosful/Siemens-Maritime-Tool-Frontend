@@ -20,17 +20,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     //  Initialize the form group
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     });
 
     // reset login status
     this.authenticationService.logout();
   }
-
-  // Getters for easy access to form fields
-  get email() { return this.loginForm.get('email'); }
-  get password() { return this.loginForm.get('password'); }
 
   onSubmit() {
     this.submitted = true;

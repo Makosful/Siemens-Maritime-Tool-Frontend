@@ -16,12 +16,10 @@ export class LoginService {
 
   public login(user: User): Observable<string> {
     return this.http.post<string>(environment.apiUrl + '/token', user, {responseType: 'text' as 'json'})
-      .pipe(
-        switchMap(token => Observable.create(obs => {
+      .pipe(switchMap(token => Observable.create(obs => {
             this.tokenService.setToken(token);
-            obs.next(token);
-          })
-        )
+            obs.next(token); }
+            ))
       );
   }
 
