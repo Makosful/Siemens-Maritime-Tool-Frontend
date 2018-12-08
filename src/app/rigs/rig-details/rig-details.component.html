@@ -28,7 +28,7 @@
       <agm-map id="map" [latitude]="rig.lat" [longitude]="rig.lng" [mapTypeControl]="true" [mapTypeId]="'hybrid'">
         <agm-marker
           [title]="'Id: ' + rig.id + ' | Name:' + ' ' + rig.name"
-          [latitude]="rig."
+          [latitude]="rig.lat"
           [longitude]="rig.lng"
           [label]="{fontWeight: 'bold', text: rig.label, color: 'yellow'}"
           [iconUrl]="'assets/rig-icon.png'">

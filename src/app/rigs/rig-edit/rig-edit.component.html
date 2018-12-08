@@ -1,4 +1,4 @@
-<div class="container-fluid" *ngIf="rig">
+<div class="container-fluid">
   <div class="row">
     <div class="col-12 col-sm-6 col-lg-4">
       <div class="card-body">
@@ -7,10 +7,6 @@
           <div class="card-body">
             <div class="card-text">
               <form [formGroup]="rigForm" (ngSubmit)="editRig()">
-                <label>
-                  New IMO:
-                  <input type="text" formControlName="imo" placeholder="{{rig.imo}}">
-                </label>
                 <label>
                   Label:
                   <input type="text" formControlName="label" placeholder="{{rig.label}}">
@@ -23,7 +19,7 @@
                     <option>Semi-Submersible</option>
                   </select>
                 </label>
-                <button type="submit">Edit rig</button>
+                <button type="submit" *ngIf="isAdmin">Edit rig</button>
               </form>
           </div>
         </div>

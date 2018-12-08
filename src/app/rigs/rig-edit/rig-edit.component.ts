@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RigService} from '../../shared/services/rig.service';
 import {FormControl, FormGroup} from '@angular/forms';
+import {TokenService} from '../../shared/services/token.service';
 
 @Component({
   selector: 'app-rig-edit',
@@ -10,7 +11,6 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class RigEditComponent implements OnInit {
     imo: number;
-
     rigForm = new FormGroup({
     imo: new FormControl(''),
     label: new FormControl(''),
@@ -18,13 +18,12 @@ export class RigEditComponent implements OnInit {
 
   });
 
-  constructor(private route: ActivatedRoute, private router: Router, private rigService: RigService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private rigService: RigService, private tokenService: TokenService) { }
 
   ngOnInit() {
     this.imo = +this.route.snapshot.paramMap.get('imo');
     this.rigService.getRigById(this.imo).subscribe(rigFromApi => {
       this.rigForm.patchValue({
-        imo: rigFromApi.imo,
         label: rigFromApi.label,
         type: rigFromApi.type,
       });

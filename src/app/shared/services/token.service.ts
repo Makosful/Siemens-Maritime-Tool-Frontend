@@ -11,6 +11,10 @@ export class TokenService {
 
   constructor() { }
 
+  readLocal(key: string) {
+    return localStorage.getItem(key);
+  }
+
   public getJwtToken(): string {
     console.log(localStorage.getItem('token'));
     return localStorage.getItem('token');
@@ -48,6 +52,19 @@ export class TokenService {
       }
       obs.next(decoded);
     });
+  }
 
+  convertedToken() {
+    const jwt = this.readLocal('currentUser').split('"token":')[1].replace('}', '').replace('"', '');
+    const jwtData = jwt.split('.')[1];
+    let decodedJwtJsonData = window.atob(jwtData);
+
+    decodedJwtJsonData = decodedJwtJsonData.replace('"http://schemas.microsoft.com/ws/2008/06/identity/claims/role"', '"role"')
+      .replace('"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"', '"name"');
+
+    return JSON.parse(decodedJwtJsonData);
+  }
+  isAdmin(): boolean {
+    return this.convertedToken().role === 'Administrator';
   }
 }

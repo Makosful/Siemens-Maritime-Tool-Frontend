@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   loading = false;
-  errormessage = '';
+  errorMessage = '';
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authenticationService: LoginService) { }
 
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/']);
         },
         error => {
-          this.errormessage = error.message;
+          this.errorMessage = error.message;
           this.loading = false;
         });
   }

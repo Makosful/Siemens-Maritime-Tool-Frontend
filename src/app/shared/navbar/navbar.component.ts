@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   loggedIn: boolean;
   displayName: string;
   navbarOpen = false;
+  isAdmin = false;
   constructor(
     private loginService: LoginService, private tokenService: TokenService) { }
 
@@ -27,7 +28,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
           return this.tokenService.getUserFromToken();
         })
       ).subscribe(user => {
-        this.displayName = user ? user.email : '';
+        this.displayName = user ? user.username : '';
+        if (user.role === 'Administrator') {
+          this.isAdmin = true;
+        }
       });
   }
 

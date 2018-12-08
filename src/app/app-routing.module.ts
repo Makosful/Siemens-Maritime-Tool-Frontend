@@ -13,12 +13,12 @@ import {RigAddComponent} from './rigs/rig-add/rig-add.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent, canActivate: [AuthGuard]},
-  {path: 'map', component: GoggleMapComponent },
-  {path: 'rigs', component: RigListComponent },
-  {path: 'rigs/:imo', component:  RigDetailsComponent },
-  {path: 'rigs/edit-rig/:imo', component: RigEditComponent },
-  {path: 'rigs/add-rig', component: RigAddComponent },
-  {path: 'login', component: LoginComponent },
+  {path: 'map', component: GoggleMapComponent, canActivate: [AuthGuard] },
+  {path: 'rigs', component: RigListComponent , canActivate: [AuthGuard]},
+  {path: 'rigs/:imo', component:  RigDetailsComponent , canActivate: [Admin]},
+  {path: 'rigs/edit-rig/:imo', component: RigEditComponent , canActivate: [Admin]},
+  {path: 'rigs/add-rig', component: RigAddComponent , canActivate: [Admin]},
+  {path: 'login', component: LoginComponent},
 ]
 
 @NgModule({
