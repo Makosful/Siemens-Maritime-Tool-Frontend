@@ -12,14 +12,14 @@ import {AuthGuard} from './auth/guards/auth.guard';
 import {RigAddComponent} from './rigs/rig-add/rig-add.component';
 
 const routes: Routes = [
-  {path: '', component: LandingComponent, canActivate: [AuthGuard]},
+  {path: '', component: LandingComponent},
   {path: 'map', component: GoggleMapComponent, canActivate: [AuthGuard] },
-  {path: 'rigs', component: RigListComponent , canActivate: [Admin]},
-  {path: 'rigs/:imo', component:  RigDetailsComponent , canActivate: [Admin]},
-  {path: 'rigs/edit-rig/:imo', component: RigEditComponent , canActivate: [Admin]},
-  {path: 'rigs/add-rig', component: RigAddComponent , canActivate: [Admin]},
+  {path: 'rigs', component: RigListComponent , canActivate: [AuthGuard, Admin]},
+  {path: 'rigs/:imo', component:  RigDetailsComponent , canActivate: [AuthGuard, Admin]},
+  {path: 'rigs/edit-rig/:imo', component: RigEditComponent , canActivate: [AuthGuard, Admin]},
+  {path: 'rigs/add-rig', component: RigAddComponent , canActivate: [AuthGuard, Admin]},
   {path: 'login', component: LoginComponent},
-]
+];
 
 @NgModule({
   declarations: [],

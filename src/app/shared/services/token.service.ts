@@ -48,7 +48,6 @@ export class TokenService {
   }
 
   public isAdmin(): any {
-
     return this.getUserFromToken().
     pipe(
       first(),

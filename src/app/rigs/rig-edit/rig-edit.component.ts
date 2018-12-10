@@ -25,6 +25,7 @@ export class RigEditComponent implements OnInit {
   ngOnInit() {
     this.imo = +this.route.snapshot.paramMap.get('imo');
     this.rigService.getRigById(this.imo).subscribe(rigFromApi => {
+      this.rig = rigFromApi;
       this.rigForm.patchValue({
         label: rigFromApi.label,
         type: rigFromApi.type,
@@ -35,7 +36,7 @@ export class RigEditComponent implements OnInit {
   editRig() {
     const rig = this.rigForm.value;
     rig.imo = this.imo;
-    this.rigService.updateRig(rig).subscribe(rigUpd => {
+    this.rigService.updateRig(rig).subscribe(() => {
       this.router.navigateByUrl('/rigs'); // return to list of rigs when done updating
     });
   }
