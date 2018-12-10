@@ -28,6 +28,9 @@ export class LoginComponent implements OnInit {
     this.authenticationService.logout();
   }
 
+  get username() { return this.loginForm.get('username'); }
+  get password() { return this.loginForm.get('password'); }
+
   onSubmit() {
     this.submitted = true;
 

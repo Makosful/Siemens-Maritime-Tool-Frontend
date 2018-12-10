@@ -28,9 +28,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
           return this.tokenService.getUserFromToken();
         })
       ).subscribe(user => {
-        this.displayName = user ? user.username : '';
-        if (user.role === 'Administrator') {
-          this.isAdmin = true;
+        if (user) {
+          this.displayName = user.username;
+          this.isAdmin = user.isAdmin;
+        } else {
+          this.displayName = '';
+          this.isAdmin = false;
         }
       });
   }

@@ -26,6 +26,13 @@ import {
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RigDetailsComponent} from './rigs/rig-details/rig-details.component';
 import { FilterRigsPipe } from './map/filter-rigs.pipe';
+import {AuthGuard} from './auth/guards/auth.guard';
+import {Admin} from './auth/guards/admin';
+import {AuthInterceptor} from './auth/interceptors/auth.interceptor';
+import {JwtInterceptor} from './auth/interceptors/jwt.interceptor';
+import {LoginService} from './shared/services/login.service';
+import {RigService} from './shared/services/rig.service';
+import {TokenService} from './shared/services/token.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +71,15 @@ import { FilterRigsPipe } from './map/filter-rigs.pipe';
     MatPaginatorModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    Admin,
+    AuthInterceptor,
+    JwtInterceptor,
+    LoginService,
+    RigService,
+    TokenService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

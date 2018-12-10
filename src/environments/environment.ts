@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:62995',
+  apiUrl: 'https://siemens-maritime.azurewebsites.net',
 };
 
 /*

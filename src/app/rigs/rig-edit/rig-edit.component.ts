@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {RigService} from '../../shared/services/rig.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {TokenService} from '../../shared/services/token.service';
+import {Rig} from '../../shared/models/rig';
 
 @Component({
   selector: 'app-rig-edit',
@@ -10,13 +11,14 @@ import {TokenService} from '../../shared/services/token.service';
   styleUrls: ['./rig-edit.component.css']
 })
 export class RigEditComponent implements OnInit {
-    imo: number;
-    rigForm = new FormGroup({
+  rigForm = new FormGroup({
     imo: new FormControl(''),
     label: new FormControl(''),
     type: new FormControl(''),
-
   });
+
+  imo: number;
+  rig: Rig;
 
   constructor(private route: ActivatedRoute, private router: Router, private rigService: RigService, private tokenService: TokenService) { }
 

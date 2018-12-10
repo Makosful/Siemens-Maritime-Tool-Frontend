@@ -3,7 +3,9 @@ import { Router, CanActivate } from '@angular/router';
 import {TokenService} from '../../shared/services/token.service';
 import {first, map, take} from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class Admin implements CanActivate {
 
   constructor(private router: Router,
@@ -14,7 +16,7 @@ export class Admin implements CanActivate {
     pipe(
       first(),
       map(user => {
-        if (user && user.role === 'Administrator') {
+        if (user && user.isAdmin) {
           return true;
         } else {
           // not logged in with right role so redirect to login page with the return url
