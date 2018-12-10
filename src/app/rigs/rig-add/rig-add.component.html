@@ -1,22 +1,30 @@
-<form [formGroup]="rigForm" (ngSubmit)="addRig()">
-  <label>
-    IMO:
-    <input type="text" formControlName="imo">
-  </label>
-
-  <label>
-    Label:
-    <input type="text" formControlName="label">
-  </label>
-
-  <label>
-    Type:
-    <select class="form-control" id="type">
-      <option>Jackup</option>
-      <option>Semi Submersible</option>
-    </select>
-  </label>
-
-  <button type="submit">Add rig</button>
-</form>
-<button class="btn btn-outline-primary" routerLink="/rigs">Return</button>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card-body">
+        <div class="card text-white bg-dark rounded">
+          <div class="card-header"><h5>New rig</h5></div>
+          <div class="card-body">
+            <div class="card-text">
+              <form [formGroup]="rigForm" (ngSubmit)="showNotification();addRig()">
+                <div class="form-group">
+                  <label for="label">Label</label>
+                  <input type="label" class="form-control" id="label" placeholder="Enter a label for the rig..">
+                </div>
+                <div class="form-group">
+                  <label for="type">Type</label>
+                  <select class="form-control" id="type">
+                    <option>Jack-up</option>
+                    <option>Semi-Submersible</option>
+                  </select>
+                  <button type="button" class=" btn btn-primary mt-5" type="submit">Edit rig</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <button class="mt-2 btn btn-outline-info" routerLink="/rigs">Return</button>
+      </div>
+    </div>
+  </div>
+</div>

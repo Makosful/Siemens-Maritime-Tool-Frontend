@@ -4,6 +4,7 @@ import {RigService} from '../../shared/services/rig.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {TokenService} from '../../shared/services/token.service';
 import {Rig} from '../../shared/models/rig';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'app-rig-edit',
@@ -11,16 +12,18 @@ import {Rig} from '../../shared/models/rig';
   styleUrls: ['./rig-edit.component.css']
 })
 export class RigEditComponent implements OnInit {
+  notifier: NotifierService;
+  success = false;
+  imo: number;
+  rig: Rig;
+
   rigForm = new FormGroup({
     imo: new FormControl(''),
     label: new FormControl(''),
     type: new FormControl(''),
   });
 
-  imo: number;
-  rig: Rig;
-
-  constructor(private route: ActivatedRoute, private router: Router, private rigService: RigService, private tokenService: TokenService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private rigService: RigService, notifyService: NotifierService) { this.notifier = notifyService; }
 
   ngOnInit() {
     this.imo = +this.route.snapshot.paramMap.get('imo');
@@ -37,7 +40,15 @@ export class RigEditComponent implements OnInit {
     const rig = this.rigForm.value;
     rig.imo = this.imo;
     this.rigService.updateRig(rig).subscribe(() => {
+      this.success = true;
+      this.showNotification();
       this.router.navigateByUrl('/rigs'); // return to list of rigs when done updating
     });
+  }
+
+  showNotification(): void {
+    if (this.success) {
+      this.notifier.notify('success', 'Successfully edited the rig!');
+    }
   }
 }

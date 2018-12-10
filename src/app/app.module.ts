@@ -33,6 +33,7 @@ import {JwtInterceptor} from './auth/interceptors/jwt.interceptor';
 import {LoginService} from './shared/services/login.service';
 import {RigService} from './shared/services/rig.service';
 import {TokenService} from './shared/services/token.service';
+import {NotifierModule} from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import {TokenService} from './shared/services/token.service';
     HttpClientModule,
     AgmJsMarkerClustererModule,
     AppRoutingModule,
-
+    NotifierModule,
     // material
     MatButtonModule,
     MatListModule,
