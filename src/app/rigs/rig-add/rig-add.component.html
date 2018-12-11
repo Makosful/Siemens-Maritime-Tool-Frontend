@@ -6,7 +6,7 @@
           <div class="card-header"><h5>New rig</h5></div>
           <div class="card-body">
             <div class="card-text">
-              <form [formGroup]="rigForm" (ngSubmit)="showNotification();addRig()">
+              <form [formGroup]="rigForm" (ngSubmit)="addRig()">
                 <div class="form-group">
                   <label for="label">Label</label>
                   <input type="label" class="form-control" id="label" placeholder="Enter a label for the rig..">
@@ -17,7 +17,7 @@
                     <option>Jack-up</option>
                     <option>Semi-Submersible</option>
                   </select>
-                  <button type="button" class=" btn btn-primary mt-5" type="submit">Edit rig</button>
+                  <button type="button" class=" btn btn-primary mt-5" type="submit">Add rig</button>
                 </div>
               </form>
             </div>
