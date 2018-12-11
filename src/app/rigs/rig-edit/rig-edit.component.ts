@@ -14,7 +14,6 @@ import {NotifierService} from 'angular-notifier';
 export class RigEditComponent implements OnInit {
   notifier: NotifierService;
   success = false;
-  imo: number;
   rig: Rig;
 
   rigForm = new FormGroup({
@@ -26,8 +25,8 @@ export class RigEditComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private rigService: RigService, notifyService: NotifierService) { this.notifier = notifyService; }
 
   ngOnInit() {
-    this.imo = +this.route.snapshot.paramMap.get('imo');
-    this.rigService.getRigById(this.imo).subscribe(rigFromApi => {
+    const imo = +this.route.snapshot.paramMap.get('imo');
+    this.rigService.getRigById(imo).subscribe(rigFromApi => {
       this.rig = rigFromApi;
       this.rigForm.patchValue({
         label: rigFromApi.label,
@@ -38,7 +37,7 @@ export class RigEditComponent implements OnInit {
 
   editRig() {
     const rig = this.rigForm.value;
-    rig.imo = this.imo;
+    rig.imo = this.rig.imo;
     this.rigService.updateRig(rig).subscribe(() => {
       this.success = true;
       this.showNotification();
