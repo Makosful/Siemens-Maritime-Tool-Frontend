@@ -3,6 +3,7 @@ import {Rig} from '../models/rig';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment.prod';
+import {TokenService} from './token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,9 @@ export class RigService {
   baseUrl = environment.apiUrl;
   rigs: Rig[];
   id = 1;
-  constructor(private httpclient: HttpClient) {
+  constructor(
+    private httpclient: HttpClient,
+    private token: TokenService) {
     /* this.rigs = [
       {
         id: this.id,
