@@ -19,9 +19,12 @@ export class TokenService {
     return localStorage.getItem('token');
   }
 
+  /**
+   * Gets the Token key from inside the JWToken
+   */
   public getToken(): string {
     // console.log(localStorage.getItem('token'));
-    return localStorage.getItem('token');
+    return JSON.parse(localStorage.getItem('token')).token;
   }
 
   public setToken(token: string) {
