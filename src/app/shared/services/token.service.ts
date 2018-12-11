@@ -3,12 +3,13 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../models/user';
 import {first, map, switchMap} from 'rxjs/operators';
+import {HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
-  public isLoggedIn = new BehaviorSubject<boolean>(!!this.getToken());
+  public isLoggedIn = new BehaviorSubject<boolean>(!!this.getJwtToken());
 
   constructor() { }
 
