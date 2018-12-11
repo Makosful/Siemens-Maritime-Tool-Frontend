@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {Rig} from '../models/rig';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment.prod';
 import {TokenService} from './token.service';
+import {PagedRigs} from '../models/rigs-paged';
 
 @Injectable({
   providedIn: 'root'
@@ -106,9 +107,16 @@ export class RigService {
 
   // REAL REQUESTS BELOW
 
-  getRigs(): Observable<Rig[]> {
-    // return this.rigs;
-    return this.httpclient.get<Rig[]>(this.apiUrl);
+  getRigs(currentPage: number, itemsPerPage: number): Observable<PagedRigs> {
+    const t = this.token.getHttpOptions();
+
+    // Params sat like this adds the ? and & to the API call link
+    t.params = new HttpParams()
+      .set('currentPage', currentPage.toString()) // Must be strings
+      .set('itemsPerPage', itemsPerPage.toString());
+
+    // Notice it returns a PagedRigs object instead of an array of anything
+    return this.httpclient.get<PagedRigs>(this.apiUrl, t);
   }
 
   getRigById(id: number): Observable<Rig> {

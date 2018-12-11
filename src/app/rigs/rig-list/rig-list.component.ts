@@ -1,10 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RigService} from '../../shared/services/rig.service';
 import {Rig} from '../../shared/models/rig';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {TokenService} from '../../shared/services/token.service';
-import {switchMap} from 'rxjs/operators';
-import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-rig-list',
@@ -16,19 +14,21 @@ export class RigListComponent implements OnInit {
   rigID: number;
   admin = false;
 
+  page = 1; // Current page
+  items = 5; // Max items per page
+  count: number; // Actual amount of items per page
+
   constructor(
     private rigService: RigService,
     private modalService: NgbModal,
     private tokenService: TokenService) { }
 
   ngOnInit() {
-    this.rigService.getRigs().subscribe(rigList => {
-      this.rigs = rigList;
-    });
+    // Made this call Refresh instead of running identical code
+    this.refresh();
 
     this.admin = !!this.tokenService.isAdmin();
-
-    console.log('Admin is: ' + this.admin);
+    // Remove console.log
   }
 
 
@@ -44,9 +44,11 @@ export class RigListComponent implements OnInit {
   }
 
   refresh() {
-    // this.rigs = this.rigService.getFakeRigs();
-    this.rigService.getRigs().subscribe(rigList => {
-      this.rigs = rigList;
+    this.rigService.getRigs(this.page, this.items)
+      .subscribe(pagedList => {
+        // Paged list contains the actual list and the amount of items in the list
+        this.count = pagedList.count;
+        this.rigs = pagedList.list;
     });
   }
 }
