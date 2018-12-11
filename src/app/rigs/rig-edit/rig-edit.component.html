@@ -6,7 +6,7 @@
           <div class="card-header"><h5>{{rig.name}}</h5></div>
           <div class="card-body">
             <div class="card-text">
-               <form [formGroup]="rigForm" (ngSubmit)="showNotification();editRig()">
+               <form [formGroup]="rigForm" (ngSubmit)="editRig()">
                 <div class="form-group">
                   <label for="label">Label</label>
                   <input type="label" class="form-control" id="label" placeholder="{{rig.label}}">

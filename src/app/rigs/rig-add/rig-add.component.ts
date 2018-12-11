@@ -22,6 +22,7 @@ export class RigAddComponent implements OnInit {
   constructor(private rigService: RigService, private router: Router, notifyService: NotifierService) { this.notifier = notifyService; }
 
   ngOnInit() {
+    debugger
   }
 
   addRig() {
