@@ -70,4 +70,13 @@ export class TokenService {
       })
     );
   }
+
+  public getHttpOptions() {
+    return{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.getToken() }),
+      params: new HttpParams()
+    };
+  }
 }
