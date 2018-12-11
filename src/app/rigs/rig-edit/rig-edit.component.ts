@@ -22,7 +22,13 @@ export class RigEditComponent implements OnInit {
     type: new FormControl(''),
   });
 
-  constructor(private route: ActivatedRoute, private router: Router, private rigService: RigService, notifyService: NotifierService) { this.notifier = notifyService; }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private rigService: RigService,
+    notifyService: NotifierService) {
+    this.notifier = notifyService;
+  }
 
   ngOnInit() {
     const imo = +this.route.snapshot.paramMap.get('imo');
