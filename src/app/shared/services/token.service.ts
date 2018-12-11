@@ -12,6 +12,13 @@ export class TokenService {
 
   constructor() { }
 
+  /**
+   * Gets the JWToken as raw text, formatted as JSON
+   */
+  public getJwtToken(): string {
+    return localStorage.getItem('token');
+  }
+
   public getToken(): string {
     // console.log(localStorage.getItem('token'));
     return localStorage.getItem('token');
