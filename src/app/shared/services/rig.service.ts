@@ -116,18 +116,16 @@ export class RigService {
   addRig(rig: Rig): Observable<Rig> {
     /*rig.id = this.id++;
     this.rigs.push(rig);*/
-    return this.httpclient.post<Rig>(this.apiUrl, rig);
+    return this.httpclient.post<Rig>(this.apiUrl, rig, this.token.getHttpOptions());
   }
 
   updateRig(rig: Rig): Observable<Rig> {
-    /*const rigUpdate = this.rigs.find(r => r.id === rig.id);
-    const i = this.rigs.indexOf(rigUpdate);
-    this.rigs[i] = rig;*/
-    return this.httpclient.put<Rig>(this.apiUrl + '/' + rig.id, rig);
+    console.log(this.token.getHttpOptions().headers.get('Authorization'));
+    return this.httpclient.put<Rig>(this.apiUrl + '/' + rig.imo, rig, this.token.getHttpOptions());
   }
 
   deleteRig(id: number): Observable<any> {
-    return this.httpclient.delete(this.apiUrl + '/' + id);
+    return this.httpclient.delete(this.apiUrl + '/' + id, this.token.getHttpOptions());
     // this.rigs = this.rigs.filter(rig => rig.id !== id);
   }
 }
