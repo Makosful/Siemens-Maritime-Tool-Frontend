@@ -3,6 +3,7 @@ import {RigService} from '../../shared/services/rig.service';
 import {Rig} from '../../shared/models/rig';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {TokenService} from '../../shared/services/token.service';
+import {PageEvent} from '@angular/material';
 
 @Component({
   selector: 'app-rig-list',
@@ -14,8 +15,9 @@ export class RigListComponent implements OnInit {
   rigID: number;
   admin = false;
 
-  page = 1; // Current page
-  items = 5; // Max items per page
+  pageEvent: PageEvent;
+  // page = 1; // Current page
+  // items = 5; // Max items per page
   count: number; // Actual amount of items per page
 
   constructor(
@@ -24,7 +26,11 @@ export class RigListComponent implements OnInit {
     private tokenService: TokenService) { }
 
   ngOnInit() {
-    // Made this call Refresh instead of running identical code
+    this.pageEvent = {
+      pageIndex: 1,
+      pageSize: 5,
+      length: this.count
+    };
     this.refresh();
 
     this.admin = !!this.tokenService.isAdmin();
@@ -40,15 +46,20 @@ export class RigListComponent implements OnInit {
 
   open(content, rig: Rig) {
     this.rigID = rig.id;
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    this.modalService.open(content, {ariaLabelledBy: 'modal window'});
   }
 
   refresh() {
-    this.rigService.getRigs(this.page, this.items)
+    this.rigService.getRigs(this.pageEvent.pageIndex, this.pageEvent.pageSize)
       .subscribe(pagedList => {
         // Paged list contains the actual list and the amount of items in the list
         this.count = pagedList.count;
         this.rigs = pagedList.list;
     });
+  }
+
+  swapPage(event: PageEvent) {
+    this.pageEvent = event;
+    this.refresh();
   }
 }

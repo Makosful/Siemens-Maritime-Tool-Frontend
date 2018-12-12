@@ -41,7 +41,6 @@ export class RigEditComponent implements OnInit {
   }
 
   editRig() {
-    debugger
     const rig = this.rigForm.value;
     rig.imo = this.rig.imo;
     this.rigService.updateRig(rig).subscribe(() => {

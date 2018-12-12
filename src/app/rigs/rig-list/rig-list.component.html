@@ -25,6 +25,9 @@
       </div>
     </div>
   </div>
+  <div class="justify-content-center">
+    <ngb-pagination [collectionSize]="10" [(page)]="pageEvent.pageIndex" [pageSize]="pageEvent.pageSize" [boundaryLinks]="true" (pageChange)="swapPage($event)"></ngb-pagination>
+  </div>
 </div>
 
 <div class="container-fluid" *ngIf="!rigs">

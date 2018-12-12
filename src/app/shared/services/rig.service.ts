@@ -10,7 +10,7 @@ import {PagedRigs} from '../models/rigs-paged';
   providedIn: 'root'
 })
 export class RigService {
-  apiUrl =  environment.apiUrl + '/api' + '/rigs'; // TODO set API Url
+  apiUrl =  environment.apiUrl + '/api' + '/rigs';
   baseUrl = environment.apiUrl;
   rigs: Rig[];
   id = 1;
