@@ -33,7 +33,12 @@ export class GoggleMapComponent implements OnInit {
   }
 
   ngOnInit() {
-    return this.rigService.getRigs(1, 5);
+    this.rigService.getRigs(0, 0) // 0 indicating that we retrieve all unfiltered.
+      .subscribe(pagedList => {
+        // Paged list contains the actual list and the amount of items in the list
+        this.rigs = pagedList.list;
+        console.log(pagedList);
+      });
   }
 
   showMarkerOnMap(rig: Rig) {

@@ -1,32 +1,35 @@
 <div class="container-fluid">
-  <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample"><i class="fas fa-bars"></i></button>
-  <div class="row">
-      <div class="card col-md-3 col-sm-12 col-12" [ngbCollapse]="isCollapsed">
+  <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+          aria-controls="collapseExample"><i class="fas fa-bars"></i></button>
+  <div class="row" id="row">
+    <div class="card col-md-3 col-sm-12 col-12" [ngbCollapse]="isCollapsed">
       <div class="card-body">
         <label>Search for a rig:</label>
-        <input type="text" [(ngModel)]="input" placeholder="Search..." class="form-control col-auto" />
+        <input type="text" [(ngModel)]="input" placeholder="Search..." class="form-control col-auto"/>
         <small class="form-text text-muted mb-2">Search for a phrase in the rig's name</small>
-        <div class="card-deck">
-        <div class="card-text" style="overflow-y: scroll;">
-          <div class="card" *ngFor="let rig of rigs | filterRigs: input">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <span class="card-text">{{rig.id}} <br>{{rig.name}} ({{rig.label}})</span>
-                </div>
-                <div class="col">
-                  <button class="btn btn-secondary ml-1 mt-2" (click)="showMarkerOnMap(rig)">Locate</button>
+        <div class="card-deck" style="max-height: 625px">
+          <div class="card-text" style="overflow-y: scroll">
+            <div class="card" *ngFor="let rig of rigs | filterRigs: input">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <span class="card-text">{{rig.id}} <br>{{rig.name}} ({{rig.label}})</span>
+                  </div>
+                  <div class="col">
+                    <button class="btn btn-secondary ml-1 mt-2" (click)="showMarkerOnMap(rig)">Locate</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        </div>
       </div>
     </div>
     <div class="col-md-9 col-sm-12 col-12">
       <agm-map id="map" [latitude]="latitude" [longitude]="longitude" [mapTypeControl]="true" [mapTypeId]="'hybrid'">
-        <agm-marker-cluster imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m"[minimumClusterSize]="10">
+        <agm-marker-cluster
+          imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m"
+          [minimumClusterSize]="10">
 
           <agm-marker
             *ngFor="let rig of rigs"

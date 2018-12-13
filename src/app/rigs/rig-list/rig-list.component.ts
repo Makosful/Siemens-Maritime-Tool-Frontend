@@ -39,8 +39,8 @@ export class RigListComponent implements OnInit {
   }
 
   open(content, rig: Rig) {
-    this.rigID = rig.id;
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    this.rigID = rig.imo;
+    this.modalService.open(content, {ariaLabelledBy: 'modal'});
   }
 
   refresh() {
