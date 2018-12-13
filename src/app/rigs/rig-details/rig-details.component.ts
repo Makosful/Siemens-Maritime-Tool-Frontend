@@ -10,6 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class RigDetailsComponent implements OnInit {
   rig: Rig;
+  zoom = 6;
 
   constructor(private rigService: RigService, private route: ActivatedRoute) { }
 

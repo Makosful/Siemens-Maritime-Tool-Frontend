@@ -26,31 +26,30 @@
       </div>
     </div>
     <div class="col-md-9 col-sm-12 col-12">
-      <agm-map id="map" [latitude]="latitude" [longitude]="longitude" [mapTypeControl]="true" [mapTypeId]="'hybrid'">
+      <agm-map id="map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [mapTypeControl]="true" [mapTypeId]="'hybrid'">
         <agm-marker-cluster
           imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m"
-          [minimumClusterSize]="10">
+          [minimumClusterSize]="3">
 
           <agm-marker
             *ngFor="let rig of rigs"
             (markerClick)="clickedMarker(openedWindow, rig)"
-            [title]="'Id: ' + rig.id + ' | Name:' + ' ' + rig.name"
-            [latitude]="rig.lat"
-            [longitude]="rig.lng"
+            [title]="'IMO: ' + rig.imo + ' | Name:' + ' ' + rig.name"
+            [latitude]="rig.locations[0].latitude"
+            [longitude]="rig.locations[0].longitude"
             [label]="{fontWeight: 'bold', text: rig.label, color: 'yellow'}"
             [iconUrl]="'assets/rig-icon.png'">
 
-            <agm-info-window [isOpen]="isInfoWindowOpen(rig.id)">
+            <agm-info-window [isOpen]="isInfoWindowOpen(rig.imo)">
               <div>
                 <h3 class="card-title">{{rig.name}}</h3>
                 <div class="card-body">
-                  <p class="card-text"><strong>Id: {{rig.id}}</strong></p>
                   <p class="card-text"><strong>IMO: {{rig.imo}}</strong></p>
                   <p class="card-text"><strong>Type: {{rig.type}}</strong></p>
 
-                  <p class="card-text"><strong>Area: (virker ikke) {{rig.area}}</strong></p>
+                  <p class="card-text"><strong>Area: {{rig.locations[0].area}}</strong></p>
                   <div class="btn-group">
-                    <a href="rigs/{{rig.id}}" class="btn btn-primary mr-2">Show details</a>
+                    <a href="rigs/{{rig.imo}}" class="btn btn-primary mr-2">Show details</a>
                     <button class="btn btn-primary">Not working</button>
                   </div>
                 </div>

@@ -7,11 +7,10 @@
       <div class="card-header"><h5>{{rig.name}}</h5></div>
       <div class="card-body">
         <p class="card-text">
-          ID: <strong>{{rig.id}}</strong><br>
           IMO: <strong>{{rig.imo}}</strong><br>
           Label: <strong>{{rig.label}}</strong><br>
-          Area: <strong>{{rig.area}}</strong><br>
-          <span class="text-muted">Last updated on: {{rig.timeStamp}}</span>
+          Area: <strong>{{rig.locations[0].area}}</strong><br>
+          <span class="text-muted">Last updated on: {{rig.locations[0].date}}</span>
         </p>
       </div>
       <div class="card-footer">

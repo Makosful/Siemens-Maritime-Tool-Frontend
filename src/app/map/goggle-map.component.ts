@@ -19,6 +19,7 @@ export class GoggleMapComponent implements OnInit {
   isCollapsed = false;
   openedWindow = 0;
   input: any;
+  zoom = 6;
 
   clickedMarker(window, rig) {
     this.openWindow(rig.id);
@@ -43,8 +44,8 @@ export class GoggleMapComponent implements OnInit {
 
   showMarkerOnMap(rig: Rig) {
     if (this.gMap) {
-      this.gMap.setCenter({ lat: rig.lat, lng: rig.lng});
+      this.gMap.setCenter({ lat: rig.locations[0].latitude, lng: rig.locations[0].longitude});
     }
-    this.openWindow(rig.id);
+    this.openWindow(rig.imo);
   }
 }
