@@ -33,7 +33,7 @@ export class GoggleMapComponent implements OnInit {
   }
 
   ngOnInit() {
-    return this.rigService.getRigs();
+    return this.rigService.getRigs(1, 5);
   }
 
   showMarkerOnMap(rig: Rig) {

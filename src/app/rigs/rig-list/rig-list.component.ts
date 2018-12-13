@@ -49,6 +49,7 @@ export class RigListComponent implements OnInit {
         // Paged list contains the actual list and the amount of items in the list
         this.count = pagedList.count;
         this.rigs = pagedList.list;
+        console.log(pagedList);
     });
   }
 }
