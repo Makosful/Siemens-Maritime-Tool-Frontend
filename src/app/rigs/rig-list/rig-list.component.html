@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
         <!-- The form controls for the various config parameters -->
-        <h4 class="title is-4">Filter rigs by name</h4> <!-- TODO also allow filtering on IMO later -->
+        <h5 class="title is-4">Filter rigs by name</h5> <!-- TODO also allow filtering on IMO later -->
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-search"></i></span>
@@ -38,17 +38,12 @@
       </div>
     </div>
   </div>
-  <div class="h-100 row align-items-center">
-    <pagination-controls [id]="config.id"
-                         [maxSize]="maxSize"
-                         [directionLinks]="directionLinks"
-                         [autoHide]="autoHide"
-                         [responsive]="responsive"
-                         [previousLabel]="labels.previousLabel"
-                         [nextLabel]="labels.nextLabel"
-                         [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
-                         [screenReaderPageLabel]="labels.screenReaderPageLabel"
-                         [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+  <div class="pager row h-100 justify-content-center align-items-center">
+    <pagination-controls [id]="config.id" [maxSize]="maxSize"
+                         [directionLinks]="directionLinks" [autoHide]="autoHide"
+                         [responsive]="responsive" [previousLabel]="labels.previousLabel"
+                         [nextLabel]="labels.nextLabel" [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                         [screenReaderPageLabel]="labels.screenReaderPageLabel" [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
                          (pageChange)="onPageChange($event)"></pagination-controls>
   </div>
 </div>
