@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Rig} from '../models/rig';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
@@ -10,13 +10,11 @@ import {PagedRigs} from '../models/rigs-paged';
   providedIn: 'root'
 })
 export class RigService {
-  apiUrl =  environment.apiUrl + '/api' + '/rigs'; // TODO set API Url
-  baseUrl = environment.apiUrl;
+  apiUrl = environment.apiUrl + '/api' + '/rigs';
   rigs: Rig[];
   id = 1;
-  constructor(
-    private httpclient: HttpClient,
-    private token: TokenService) {
+
+  constructor(private httpclient: HttpClient, private token: TokenService) {
     /* this.rigs = [
       {
         id: this.id,
@@ -120,13 +118,10 @@ export class RigService {
   }
 
   getRigById(id: number): Observable<Rig> {
-    // return this.rigs.find(rig => rig.id === id);
     return this.httpclient.get<Rig>(this.apiUrl + '/' + id);
   }
 
   addRig(rig: Rig): Observable<Rig> {
-    /*rig.id = this.id++;
-    this.rigs.push(rig);*/
     return this.httpclient.post<Rig>(this.apiUrl, rig, this.token.getHttpOptions());
   }
 
@@ -137,6 +132,5 @@ export class RigService {
 
   deleteRig(id: number): Observable<any> {
     return this.httpclient.delete(this.apiUrl + '/' + id, this.token.getHttpOptions());
-    // this.rigs = this.rigs.filter(rig => rig.id !== id);
   }
 }

@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div class="col-12 col-sm-12 col-lg-8">
+    <div class="col-12 col-sm-12 col-lg-8 mt-1">
       <agm-map id="map" [latitude]="rig.locations[0].latitude" [longitude]="rig.locations[0].longitude" [zoom]="zoom" om [mapTypeControl]="true" [mapTypeId]="'hybrid'">
         <agm-marker
           [title]="'IMO: ' + rig.imo + ' | Name:' + ' ' + rig.name"

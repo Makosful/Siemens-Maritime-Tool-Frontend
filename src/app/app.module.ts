@@ -25,7 +25,7 @@ import {
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RigDetailsComponent} from './rigs/rig-details/rig-details.component';
-import { FilterRigsPipe } from './map/filter-rigs.pipe';
+import { FilterRigsPipe } from './shared/services/filter-rigs.pipe';
 import {AuthGuard} from './auth/guards/auth.guard';
 import {Admin} from './auth/guards/admin';
 import {AuthInterceptor} from './auth/interceptors/auth.interceptor';
@@ -34,6 +34,7 @@ import {LoginService} from './shared/services/login.service';
 import {RigService} from './shared/services/rig.service';
 import {TokenService} from './shared/services/token.service';
 import {NotifierModule} from 'angular-notifier';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {NotifierModule} from 'angular-notifier';
     AgmJsMarkerClustererModule,
     AppRoutingModule,
     NotifierModule,
+    NgxPaginationModule,
     // material
     MatButtonModule,
     MatListModule,

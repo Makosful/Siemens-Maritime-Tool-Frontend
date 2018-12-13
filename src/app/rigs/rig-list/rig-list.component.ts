@@ -3,6 +3,7 @@ import {RigService} from '../../shared/services/rig.service';
 import {Rig} from '../../shared/models/rig';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {TokenService} from '../../shared/services/token.service';
+import {PaginationInstance} from 'ngx-pagination';
 
 @Component({
   selector: 'app-rig-list',
@@ -12,10 +13,26 @@ import {TokenService} from '../../shared/services/token.service';
 export class RigListComponent implements OnInit {
   rigs: Rig[];
   rigID: number;
-  admin = false;
 
-  page = 1; // Current page
-  items = 5; // Max items per page
+  admin = false;
+   filter = '';
+   maxSize = 7;
+   directionLinks = true;
+   autoHide = false;
+   responsive = false;
+   config: PaginationInstance = {
+    id: 'advanced',
+    itemsPerPage: 10,
+    currentPage: 1
+  };
+   labels: any = {
+    previousLabel: 'Prev',
+    nextLabel: 'Next',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
+  };
+
   count: number; // Actual amount of items per page
 
   constructor(
@@ -31,6 +48,9 @@ export class RigListComponent implements OnInit {
     // Remove console.log
   }
 
+  onPageChange(number: number) {
+    this.config.currentPage = number;
+  }
 
   deleteRig(id: number) {
     // this.rigService.deleteFakeRig(id);
@@ -44,7 +64,7 @@ export class RigListComponent implements OnInit {
   }
 
   refresh() {
-    this.rigService.getRigs(this.page, this.items)
+    this.rigService.getRigs(0, 0) // 0 = get all, no backend paging
       .subscribe(pagedList => {
         // Paged list contains the actual list and the amount of items in the list
         this.count = pagedList.count;

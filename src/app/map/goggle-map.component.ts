@@ -21,6 +21,8 @@ export class GoggleMapComponent implements OnInit {
   input: any;
   zoom = 6;
 
+
+
   clickedMarker(window, rig) {
     this.openWindow(rig.id);
   }

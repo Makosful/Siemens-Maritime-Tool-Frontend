@@ -1,9 +1,23 @@
 <div class="container-fluid" *ngIf="rigs">
   <div *ngIf="admin">
-    <button class="btn btn-outline-info mt-1" routerLink="/rigs/add-rig">Add</button>
+    <div class="card">
+      <div class="card-body">
+        <!-- The form controls for the various config parameters -->
+        <h4 class="title is-4">Filter rigs by name</h4> <!-- TODO also allow filtering on IMO later -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+          </div>
+          <input type="text" class="form-control" placeholder="Enter text here..." style="max-width: 400px;" [(ngModel)]="filter">
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+<div>
   <div class="card-deck">
-    <div class="card my-3 text-white bg-dark rounded" style="min-width: 14em;" *ngFor="let rig of rigs">
+    <div class="card my-3 text-white bg-dark rounded" style="min-width: 14em;"
+         *ngFor="let rig of rigs | filterRigs: filter | paginate: config">
       <div class="card-header"><h5>{{rig.name}}</h5></div>
       <div class="card-body">
         <p class="card-text">
@@ -24,8 +38,20 @@
       </div>
     </div>
   </div>
+  <div class="h-100 row align-items-center">
+    <pagination-controls [id]="config.id"
+                         [maxSize]="maxSize"
+                         [directionLinks]="directionLinks"
+                         [autoHide]="autoHide"
+                         [responsive]="responsive"
+                         [previousLabel]="labels.previousLabel"
+                         [nextLabel]="labels.nextLabel"
+                         [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                         [screenReaderPageLabel]="labels.screenReaderPageLabel"
+                         [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+                         (pageChange)="onPageChange($event)"></pagination-controls>
+  </div>
 </div>
-
 <div class="container-fluid" *ngIf="!rigs">
   <img src="https://i.imgur.com/KMaAB8Q.gif" class="center mt-3" style="height: 100px; width: 250px;" alt="Loading">
 </div>
