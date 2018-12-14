@@ -7,6 +7,7 @@ import {Rig} from '../shared/models/rig';
   templateUrl: './goggle-map.component.html',
   styleUrls: ['./goggle-map.component.css'],
 })
+
 export class GoggleMapComponent implements OnInit {
 
   constructor(private rigService: RigService) { }
@@ -20,8 +21,6 @@ export class GoggleMapComponent implements OnInit {
   openedWindow = 0;
   input: any;
   zoom = 6;
-
-
 
   clickedMarker(window, rig) {
     this.openWindow(rig.id);
