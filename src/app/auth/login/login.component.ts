@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoginService} from '../../shared/services/login.service';
 
@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   loading = false;
   errorMessage = '';
+  invalidUserName = false;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authenticationService: LoginService) { }
 
@@ -39,7 +40,14 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    if (this.username) {
+      const txt = this.username.value;
+      if (txt.includes('.')) { this.invalidUserName = true;
+      this.errorMessage = 'Username contains a dot (.)';
+      return; }
+    } else {
     this.loading = true;
+    }
     this.authenticationService.login(this.loginForm.value)
       .subscribe(
         success => {
