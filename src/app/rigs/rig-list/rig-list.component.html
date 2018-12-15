@@ -3,8 +3,8 @@
     <div class="card">
       <div class="card-body">
         <!-- The form controls for the various config parameters -->
-        <h5 class="title is-4">Filter rigs by name</h5> <!-- TODO also allow filtering on IMO later -->
-        <div class="input-group mb-3">
+        <h5 class="title">Filter rigs by name</h5> <!-- TODO also allow filtering on IMO later -->
+        <div class="input-group mb-1">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-search"></i></span>
           </div>
@@ -16,8 +16,8 @@
   </div>
 </div>
 <div>
-  <div class="card-deck">
-    <div class="card my-3 text-white bg-dark rounded" style="min-width: 14em;"
+  <div class="card-deck ml-1 mr-1">
+    <div class="card m-2 text-white bg-dark rounded" style="min-width: 14em;"
          *ngFor="let rig of rigs | filterRigs: filter | paginate: config">
       <div class="card-header"><h5>{{rig.name}}</h5></div>
       <div class="card-body">
@@ -40,7 +40,9 @@
         </div>
       </div>
     </div>
-    <div class="pager row h-100 justify-content-center align-items-center">
+  </div>
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="pager">
       <pagination-controls [id]="config.id" [maxSize]="maxSize"
                            [directionLinks]="directionLinks" [autoHide]="autoHide"
                            [responsive]="responsive" [previousLabel]="labels.previousLabel"
