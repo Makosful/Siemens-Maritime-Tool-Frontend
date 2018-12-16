@@ -30,7 +30,7 @@
       <agm-map id="map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [mapTypeControl]="true" [mapTypeId]="'hybrid'">
         <agm-marker-cluster
           imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m"
-          [minimumClusterSize]="2">
+          [minimumClusterSize]="4">
 
           <agm-marker
             *ngFor="let rig of rigs"
