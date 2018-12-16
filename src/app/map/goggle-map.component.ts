@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RigService} from '../shared/services/rig.service';
 import {Rig} from '../shared/models/rig';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-googlemap',
@@ -21,6 +22,7 @@ export class GoggleMapComponent implements OnInit {
   openedWindow = 0;
   input: any;
   zoom = 6;
+  nullLabel = false;
 
   clickedMarker(window, rig) {
     this.openWindow(rig.id);
@@ -39,7 +41,12 @@ export class GoggleMapComponent implements OnInit {
       .subscribe(pagedList => {
         // Paged list contains the actual list and the amount of items in the list
         this.rigs = pagedList.list;
-        console.log(pagedList);
+        for (const rig of this.rigs) {
+          if (rig.label === undefined) {
+            rig.label = ' ';
+            this.nullLabel = true;
+          }
+        }
       });
   }
 

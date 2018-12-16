@@ -9,11 +9,11 @@
               <form [formGroup]="rigForm" (ngSubmit)="addRig()">
                 <div class="form-group">
                   <label for="label">Label</label>
-                  <input type="label" class="form-control" id="label" placeholder="Enter a label for the rig..">
+                  <input type="label" class="form-control" id="label" placeholder="Enter an optional label for the rig...">
                 </div>
                 <div class="form-group">
                   <label for="type">Type</label>
-                  <select class="form-control" id="type">
+                  <select required class="form-control" id="type">
                     <option>Jack-up</option>
                     <option>Semi-Submersible</option>
                   </select>

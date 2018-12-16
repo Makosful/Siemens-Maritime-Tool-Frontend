@@ -13,7 +13,8 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col">
-                    <span class="card-text">{{rig.id}} <br>{{rig.name}} ({{rig.label}})</span>
+                    <span *ngIf="nullLabel" class="card-text">{{rig.id}} <br>{{rig.name}}</span>
+                    <span *ngIf="!nullLabel" class="card-text">{{rig.id}} <br>{{rig.name}} ({{rig.label}})</span>
                   </div>
                   <div class="col">
                     <button class="btn btn-secondary ml-1 mt-2" (click)="showMarkerOnMap(rig)">Locate</button>
