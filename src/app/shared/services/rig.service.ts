@@ -118,7 +118,6 @@ export class RigService {
   }
 
   getRigById(id: number): Observable<Rig> {
-    debugger;
     return this.httpclient.get<Rig>(this.apiUrl + '/' + id);
   }
 
