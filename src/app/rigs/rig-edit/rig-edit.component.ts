@@ -17,6 +17,7 @@ export class RigEditComponent implements OnInit {
 
   rigForm = new FormGroup({
     imo: new FormControl(''),
+    name: new FormControl(''),
     label: new FormControl(''),
     type: new FormControl(''),
   });
@@ -25,15 +26,14 @@ export class RigEditComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private rigService: RigService,
-    notifyService: NotifierService) {
-    this.notifier = notifyService;
-  }
+    notifyService: NotifierService) {this.notifier = notifyService; }
 
   ngOnInit() {
     const imo = +this.route.snapshot.paramMap.get('imo');
     this.rigService.getRigById(imo).subscribe(rigFromApi => {
       this.rig = rigFromApi;
       this.rigForm.patchValue({
+        name: rigFromApi.name,
         label: rigFromApi.label,
         type: rigFromApi.type,
       });
@@ -41,7 +41,6 @@ export class RigEditComponent implements OnInit {
   }
 
   editRig() {
-    debugger
     const rig = this.rigForm.value;
     rig.imo = this.rig.imo;
     this.rigService.updateRig(rig).subscribe(() => {

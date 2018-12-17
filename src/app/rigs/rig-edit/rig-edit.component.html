@@ -9,6 +9,10 @@
               <div class="card-text">
                 <form [formGroup]="rigForm" (ngSubmit)="editRig()">
                   <div class="form-group">
+                    <label for="name">Name</label>
+                    <input required type="name" class="form-control" id="name" placeholder="{{rig.name}}">
+                  </div>
+                  <div class="form-group">
                     <label for="label">Label</label>
                     <input type="label" class="form-control" id="label" placeholder="{{rig.label}}">
                   </div>

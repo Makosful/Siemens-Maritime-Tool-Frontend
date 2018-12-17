@@ -15,9 +15,9 @@ const routes: Routes = [
   {path: '', component: LandingComponent},
   {path: 'map', component: GoggleMapComponent, canActivate: [AuthGuard] },
   {path: 'rigs', component: RigListComponent , canActivate: [AuthGuard, Admin]},
-  {path: 'rigs/:imo', component:  RigDetailsComponent , canActivate: [AuthGuard, Admin]},
-  {path: 'rigs/edit-rig/:imo', component: RigEditComponent , canActivate: [AuthGuard, Admin]},
   {path: 'rigs/add-rig', component: RigAddComponent , canActivate: [AuthGuard, Admin]},
+  {path: 'rigs/edit-rig/:imo', component: RigEditComponent , canActivate: [AuthGuard, Admin]},
+  {path: 'rigs/:imo', component:  RigDetailsComponent , canActivate: [AuthGuard, Admin]},
   {path: 'login', component: LoginComponent},
 ];
 

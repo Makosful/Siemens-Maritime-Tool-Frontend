@@ -9,7 +9,7 @@ export class FilterRigsPipe implements PipeTransform {
   transform(rigs: Rig[], input: any): any {
     if (input === undefined) { return rigs; } else {
       return rigs.filter(function (rig) {
-        return rig.name.toLowerCase().includes(input.toLowerCase());
+        if (rig.name.toLowerCase().includes(input.toLowerCase()) || rig.imo.toString().includes(input.toString())) { return rig; }
       });
     }
   }

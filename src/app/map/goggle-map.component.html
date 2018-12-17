@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="col-md-9 col-sm-12 col-12">
-      <agm-map id="map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [mapTypeControl]="true" [mapTypeId]="'hybrid'">
+      <agm-map id="map" (mapReady)="mapReady($event)" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [mapTypeControl]="true" [mapTypeId]="'hybrid'">
         <agm-marker-cluster
           imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m"
           [minimumClusterSize]="4">
@@ -47,7 +47,6 @@
                 <div class="card-body">
                   <p class="card-text"><strong>IMO: {{rig.imo}}</strong></p>
                   <p class="card-text"><strong>Type: {{rig.type}}</strong></p>
-
                   <p class="card-text"><strong>Area: {{rig.locations[0].area}}</strong></p>
                   <div class="row justify-content-center">
                     <a href="rigs/{{rig.imo}}" class="btn btn-primary mr-2">Show details</a>

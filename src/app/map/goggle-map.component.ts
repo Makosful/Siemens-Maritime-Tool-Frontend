@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {RigService} from '../shared/services/rig.service';
 import {Rig} from '../shared/models/rig';
 import {forEach} from '@angular/router/src/utils/collection';
+import {GoogleMapsAPIWrapper} from '@agm/core';
+import {google} from '@agm/core/services/google-maps-types';
 
 @Component({
   selector: 'app-googlemap',
@@ -17,7 +19,7 @@ export class GoggleMapComponent implements OnInit {
   longitude = 8.446826;
 
   rigs: Rig[];
-  gMap: any;
+  map: any;
   isCollapsed = false;
   openedWindow = 0;
   input: any;
@@ -37,7 +39,7 @@ export class GoggleMapComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.rigService.getRigs(0, 0) // 0 indicating that we retrieve all unfiltered.
+     this.rigService.getRigs(0, 0) // 0 indicating that we retrieve all unfiltered.
       .subscribe(pagedList => {
         // Paged list contains the actual list and the amount of items in the list
         this.rigs = pagedList.list;
@@ -51,9 +53,13 @@ export class GoggleMapComponent implements OnInit {
   }
 
   showMarkerOnMap(rig: Rig) {
-    if (this.gMap) {
-      this.gMap.setCenter({ lat: rig.locations[0].latitude, lng: rig.locations[0].longitude});
+    if (this.map) {
+      this.map.setCenter({lat: rig.locations[0].latitude, lng: rig.locations[0].longitude});
     }
     this.openWindow(rig.imo);
+  }
+
+  mapReady(map) {
+    this.map = map;
   }
 }
