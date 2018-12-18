@@ -12,10 +12,9 @@ import {NotifierService} from 'angular-notifier';
 })
 export class RigAddComponent implements OnInit {
   notifier: NotifierService;
-  success = false;
+  succesful = false;
   rigForm = new FormGroup({
     imo: new FormControl(''),
-    label: new FormControl(''),
     type: new FormControl(''),
   });
 
@@ -31,16 +30,21 @@ export class RigAddComponent implements OnInit {
       label: rigFromForm.label,
       type: rigFromForm.type,
     };
-    this.rigService.addRig(rig as Rig).subscribe(() => {
-      this.success = true;
+    this.rigService.addRig(rig as Rig).subscribe(success => {
+      this.succesful = true;
       this.showNotification();
       this.router.navigateByUrl('/rigs');
-    });
+    },
+      error => {
+      this.showNotification();
+      });
   }
 
   showNotification(): void {
-    if (this.success) {
+    if (this.succesful) {
       this.notifier.notify('success', 'Successfully added the rig!');
+    } else {
+      this.notifier.notify('error', 'There was an error adding the rig!');
     }
   }
 }

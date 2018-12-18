@@ -8,6 +8,8 @@
             <div class="card-text">
               <form [formGroup]="rigForm" (ngSubmit)="addRig()">
                 <div class="form-group">
+                  <label for="imo">IMO</label>
+                  <input required type="number" class="form-control" id="imo" placeholder="Enter IMO here...">
                 </div>
                 <div class="form-group">
                   <label for="type">Select a type</label>
