@@ -24,7 +24,6 @@ export class TokenService {
    * Gets the Token key from inside the JWToken
    */
   public getToken(): string {
-    // console.log(localStorage.getItem('token'));
     return JSON.parse(localStorage.getItem('token')).token;
   }
 
@@ -52,7 +51,6 @@ export class TokenService {
       if (token) {
         const jwt = new JwtHelperService();
         decoded = jwt.decodeToken(token);
-        console.log(jwt.decodeToken(token));
       }
       obs.next(decoded);
     });

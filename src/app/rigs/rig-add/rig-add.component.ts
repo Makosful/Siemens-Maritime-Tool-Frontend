@@ -13,10 +13,7 @@ import {NotifierService} from 'angular-notifier';
 export class RigAddComponent implements OnInit {
   notifier: NotifierService;
   successful = false;
-  rigForm = new FormGroup({
-    imo: new FormControl(''),
-    type: new FormControl(''),
-  });
+  imo: number;
 
   constructor(private rigService: RigService, private router: Router, notifyService: NotifierService) { this.notifier = notifyService; }
 
@@ -24,12 +21,9 @@ export class RigAddComponent implements OnInit {
   }
 
   addRig() {
-    const rigFromForm = this.rigForm.value;
-    const rig = {
-      imo: rigFromForm.imo,
-      type: rigFromForm.type,
-    };
-    this.rigService.addRig(rig as Rig).subscribe(success => {
+    const rig = new Rig();
+    rig.imo = this.imo;
+    this.rigService.addRig(rig).subscribe(success => {
       this.successful = true;
       this.showNotification();
       this.router.navigateByUrl('/rigs');

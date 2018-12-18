@@ -5,5 +5,5 @@ export class Rig {
   name: string;
   locations: Location[];
   label: string;
-  type: string;
+  rigType: string;
 }

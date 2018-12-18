@@ -22,7 +22,7 @@ export class RigService {
         name: 'Maersk Inspirer', // name
         lat: 55.88083343, // latitude
         lng: 8.66022396, // longitude
-        type: 'Jackup', // type
+        rigType: 'Jackup', // rigType
         timeStamp: null, // position received timestamp
         status: null, // status
         area: null, // area
@@ -34,7 +34,7 @@ export class RigService {
         name: 'Test Rig', // name
         lat: 54.5458952, // latitude
         lng: 7.80766282, // longitude
-        type: 'Semi Submersible', // type
+        rigType: 'Semi Submersible', // rigType
         timeStamp: null, // position received timestamp
         status: null, // status
         area: null, // area
@@ -46,7 +46,7 @@ export class RigService {
         name: 'Test Rig 1', // name
         lat: 56.28678858, // latitude
         lng: 8.91543887, // longitude
-        type: 'Semi Submersible', // type
+        rigType: 'Semi Submersible', // rigType
         timeStamp: null, // position received timestamp
         status: null, // status
         area: null, // area
@@ -58,7 +58,7 @@ export class RigService {
         name: 'Test Rig 2', // name
         lat: 54.67637221, // latitude
         lng: 10.37901072, // longitude
-        type: 'Jackup', // type
+        rigType: 'Jackup', // rigType
         timeStamp: null, // position received timestamp
         status: null, // status
         area: null, // area
@@ -70,7 +70,7 @@ export class RigService {
         name: 'Test Rig 3', // name
         lat: 55.85055695, // latitude
         lng: 10.17336934, // longitude
-        type: 'Semi Submersible', // type
+        rigType: 'Semi Submersible', // rigType
         timeStamp: null, // position received timestamp
         status: null, // status
         area: null, // area
@@ -125,7 +125,7 @@ export class RigService {
   }
 
   updateRig(rig: Rig): Observable<Rig> {
-    console.log(this.token.getHttpOptions().headers.get('Authorization'));
+
     return this.httpclient.put<Rig>(this.apiUrl + '/' + rig.imo, rig, this.token.getHttpOptions());
   }
 
