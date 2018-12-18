@@ -8,11 +8,9 @@
             <div class="card-text">
               <form [formGroup]="rigForm" (ngSubmit)="addRig()">
                 <div class="form-group">
-                  <label for="label">Label</label>
-                  <input type="label" class="form-control" id="label" placeholder="Enter an optional label for the rig...">
                 </div>
                 <div class="form-group">
-                  <label for="type">Type</label>
+                  <label for="type">Select a type</label>
                   <select required class="form-control" id="type">
                     <option>Jack-up</option>
                     <option>Semi-Submersible</option>

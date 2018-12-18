@@ -23,8 +23,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subscription = this.tokenService.isLoggedIn
       .pipe(
         // Map to
-        switchMap(isLoggenIn => {
-          this.loggedIn = isLoggenIn;
+        switchMap(isLoggedIn => {
+          this.loggedIn = isLoggedIn;
           return this.tokenService.getUserFromToken();
         })
       ).subscribe(user => {

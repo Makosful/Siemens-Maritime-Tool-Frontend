@@ -6,7 +6,7 @@ import {GoggleMapComponent} from './map/goggle-map.component';
 import {RigListComponent} from './rigs/rig-list/rig-list.component';
 import {RigDetailsComponent} from './rigs/rig-details/rig-details.component';
 import {RigEditComponent} from './rigs/rig-edit/rig-edit.component';
-import {LoginComponent} from './auth/login/login.component';
+import {LoginComponent} from './login/login.component';
 import {Admin} from './auth/guards/admin';
 import {AuthGuard} from './auth/guards/auth.guard';
 import {RigAddComponent} from './rigs/rig-add/rig-add.component';

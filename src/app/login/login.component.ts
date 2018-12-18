@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {LoginService} from '../../shared/services/login.service';
+import {LoginService} from '../shared/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -15,18 +15,17 @@ export class LoginComponent implements OnInit {
   loading = false;
   errorMessage = '';
   invalidUserName = false;
+  isLoggedIn = false;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authenticationService: LoginService) { }
 
   ngOnInit() {
+  if (this.isLoggedIn) { this.authenticationService.logout(); }
     //  Initialize the form group
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-
-    // reset login status
-    this.authenticationService.logout();
   }
 
   get username() { return this.loginForm.get('username'); }
@@ -51,6 +50,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.loginForm.value)
       .subscribe(
         success => {
+          this.isLoggedIn = true;
           this.router.navigate(['/']);
         },
         error => {

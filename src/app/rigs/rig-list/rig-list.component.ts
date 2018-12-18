@@ -25,7 +25,7 @@ export class RigListComponent implements OnInit {
     itemsPerPage: 10,
     currentPage: 1
   };
-   labels: any = {
+   labels = {
     previousLabel: 'Prev',
     nextLabel: 'Next',
     screenReaderPaginationLabel: 'Pagination',
@@ -33,19 +33,14 @@ export class RigListComponent implements OnInit {
     screenReaderCurrentLabel: `You're on page`
   };
 
-  count: number; // Actual amount of items per page
+  count: number;
 
-  constructor(
-    private rigService: RigService,
-    private modalService: NgbModal,
-    private tokenService: TokenService) { }
+  constructor(private rigService: RigService, private modalService: NgbModal, private tokenService: TokenService) { }
 
   ngOnInit() {
-    // Made this call Refresh instead of running identical code
     this.refresh();
 
     this.admin = !!this.tokenService.isAdmin();
-    // Remove console.log
   }
 
   onPageChange(number: number) {
