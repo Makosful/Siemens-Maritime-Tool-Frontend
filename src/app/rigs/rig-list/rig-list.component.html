@@ -3,17 +3,10 @@
     <div class="card">
       <div class="card-body">
         <div>
-          <button class="mt-2 btn btn-outline-info" routerLink="/rigs/add-rig">Add rig</button>
+          <button class="mt-1 mb-2 btn btn-outline-info" routerLink="/rigs/add-rig">Add rig</button>
         </div>
-        <!-- The form controls for the various config parameters -->
-        <h5 class="title">Filter rigs by name</h5> <!-- TODO also allow filtering on IMO later -->
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-search"></i></span>
-          </div>
-          <input class="form-control" placeholder="Enter search criteria here..." style="max-width: 400px;"
-                 [(ngModel)]="filter">
-        </div>
+        <input type="text" [(ngModel)]="input" placeholder="Name or IMO..." class="form-control col-auto"/>
+        <small class="form-text text-muted">Search for a phrase in the rig's name or the IMO</small>
       </div>
     </div>
   </div>
