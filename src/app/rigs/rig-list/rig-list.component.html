@@ -1,20 +1,22 @@
 <div class="container-fluid" *ngIf="rigs">
-  <div *ngIf="admin">
-    <div class="card">
-      <div class="card-body">
-        <div>
+  <!-- Admin tool -->
+  <div *ngIf="admin" class="row">
+    <div class="col-12 mt-3">
+      <div class="card">
+        <div class="card-body">
           <button class="mt-1 mb-2 btn btn-outline-info" routerLink="/rigs/add-rig">Add rig</button>
+          <input type="text" [(ngModel)]="input" placeholder="Name or IMO..." class="form-control col-auto"/>
+          <small class="form-text text-muted">Search for a phrase in the rig's name or the IMO</small>
         </div>
-        <input type="text" [(ngModel)]="input" placeholder="Name or IMO..." class="form-control col-auto"
-               style="max-width: 700px;"/>
-        <small class="form-text text-muted">Search for a phrase in the rig's name or the IMO</small>
       </div>
     </div>
   </div>
-  <div>
-    <div class="card-deck m-1">
-      <div class="card m-2 text-white bg-dark rounded" style="min-width: 14em;"
-           *ngFor="let rig of rigs | filterRigs: filter | paginate: config">
+  
+  <!-- Content -->
+  <div class="row">
+    <div *ngFor="let rig of rigs | filterRigs: filter | paginate: config"
+         class="col-12 col-md-6 col-lg-4 col-xl-3">
+      <div class="card mt-3 text-white bg-dark rounded">
         <div class="card-header"><h5>{{rig.name}}</h5></div>
         <div class="card-body">
           <p class="card-text">
@@ -34,38 +36,43 @@
         </div>
       </div>
     </div>
-    <div class="row h-100 justify-content-center align-items-center">
-      <div class="pager">
-        <pagination-controls [id]="config.id" [maxSize]="maxSize"
-                             [directionLinks]="directionLinks" [autoHide]="autoHide"
-                             [responsive]="responsive" [previousLabel]="labels.previousLabel"
-                             [nextLabel]="labels.nextLabel"
-                             [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
-                             [screenReaderPageLabel]="labels.screenReaderPageLabel"
-                             [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
-                             (pageChange)="onPageChange($event)"></pagination-controls>
-      </div>
-    </div>
-
-    <!-- MODAL POPUP (Delete) -->
-    <ng-template #modal let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal">Delete Confirmation</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Clicked Exit')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you wish to delete this rig?</p>
-        <span class="text-danger">This operation can not be undone.</span>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-info" (click)="modal.close()">No</button>
-        <button type="button" class="btn btn-outline-danger" (click)="deleteRig(rigID); modal.close()">Yes</button>
-      </div>
-    </ng-template>
   </div>
+  
+  <!-- Pagination -->
+  <div class="row mt-3">
+    <div class="col-12" align="center">
+      <div class="pager">
+      </div>
+      <pagination-controls [id]="config.id" [maxSize]="maxSize"
+                           [directionLinks]="directionLinks" [autoHide]="autoHide"
+                           [responsive]="responsive" [previousLabel]="labels.previousLabel"
+                           [nextLabel]="labels.nextLabel"
+                           [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                           [screenReaderPageLabel]="labels.screenReaderPageLabel"
+                           [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+                           (pageChange)="onPageChange($event)"></pagination-controls>
+    </div>
+  </div>
+
 </div>
+
+<!-- MODAL POPUP (Delete) -->
+<ng-template #modal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal">Delete Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Clicked Exit')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you wish to delete this rig?</p>
+    <span class="text-danger">This operation can not be undone.</span>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-info" (click)="modal.close()">No</button>
+    <button type="button" class="btn btn-outline-danger" (click)="deleteRig(rigID); modal.close()">Yes</button>
+  </div>
+</ng-template>
 
 <div class="container" *ngIf="!rigs">
   <img src="https://i.imgur.com/KMaAB8Q.gif" class="center mt-3" style="height: 100px; width: 250px;" alt="Loading">
