@@ -1,3 +1,8 @@
 .github {
   background-color: #6e5494;
+  color: black;
+}
+
+.github:hover {
+  color: white;
 }
