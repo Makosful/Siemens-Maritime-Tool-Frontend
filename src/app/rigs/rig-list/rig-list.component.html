@@ -14,8 +14,7 @@
   
   <!-- Content -->
   <div class="row">
-    <div *ngFor="let rig of rigs | filterRigs: filter | paginate: config"
-         class="col-12 col-md-6 col-lg-4 col-xl-3">
+    <div *ngFor="let rig of rigs | filterRigs: input | paginate: config" class="col-12 col-md-6 col-lg-4 col-xl-3">
       <div class="card mt-3 text-white bg-dark rounded">
         <div class="card-header"><h5>{{rig.name}}</h5></div>
         <div class="card-body">

@@ -34,6 +34,7 @@ export class RigListComponent implements OnInit {
   };
 
   count: number;
+  input: any;
 
   constructor(private rigService: RigService, private modalService: NgbModal, private tokenService: TokenService) { }
 
