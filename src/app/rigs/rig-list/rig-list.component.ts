@@ -40,7 +40,6 @@ export class RigListComponent implements OnInit {
 
   ngOnInit() {
     this.refresh();
-
     this.admin = !!this.tokenService.isAdmin();
   }
 
