@@ -12,7 +12,6 @@ import {PagedRigs} from '../models/rigs-paged';
 export class RigService {
   apiUrl = environment.apiUrl + '/api' + '/rigs';
   rigs: Rig[];
-  id = 1;
 
   constructor(private httpclient: HttpClient, private token: TokenService) {
     /* this.rigs = [
@@ -117,8 +116,8 @@ export class RigService {
     return this.httpclient.get<PagedRigs>(this.apiUrl, t);
   }
 
-  getRigById(id: number): Observable<Rig> {
-    return this.httpclient.get<Rig>(this.apiUrl + '/' + id);
+  getRigById(imo: number): Observable<Rig> {
+    return this.httpclient.get<Rig>(this.apiUrl + '/' + imo);
   }
 
   addRig(rig: Rig): Observable<Rig> {
@@ -130,7 +129,7 @@ export class RigService {
     return this.httpclient.put<Rig>(this.apiUrl + '/' + rig.imo, rig, this.token.getHttpOptions());
   }
 
-  deleteRig(id: number): Observable<any> {
-    return this.httpclient.delete(this.apiUrl + '/' + id, this.token.getHttpOptions());
+  deleteRig(imo: number): Observable<any> {
+    return this.httpclient.delete(this.apiUrl + '/' + imo, this.token.getHttpOptions());
   }
 }
