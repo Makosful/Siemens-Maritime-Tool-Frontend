@@ -5,10 +5,10 @@
     <div class="card col-md-3 col-sm-12 col-12" [ngbCollapse]="isCollapsed">
       <div class="card-body">
         <label>Search for a rig:</label>
-        <input type="text" [(ngModel)]="input" placeholder="Search..." class="form-control col-auto"/>
-        <small class="form-text text-muted mb-2">Search for a phrase in the rig's name</small>
+        <input type="text" [(ngModel)]="input" placeholder="Name or IMO..." class="form-control col-auto"/>
+        <small class="form-text text-muted mb-2">Search for a phrase in the rig's name or the IMO</small>
         <div class="card-deck" style="max-height: 625px">
-          <div class="card-text" style="overflow-y: scroll">
+          <div class="card-text" style="overflow-y: scroll; min-width: 100%;">
             <div class="card" *ngFor="let rig of rigs | filterRigs: input">
               <div class="card-body">
                 <div class="row">
